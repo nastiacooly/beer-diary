@@ -1,0 +1,54 @@
+/* Roboto font import from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+body {
+    background: repeat url("../images/bg.jpg");
+}
+
+.container {
+    background-color: #F6E54C;
+}
+
+.bg-blue {
+    background-color: #663ED6;
+}
+
+.main-icon {
+    height: 76px;
+}
+
+.nav-link {
+    color: #F6E54C !important;
+    font-size: 20;
+}
+
+.nav-link.active {
+    font-weight: 700;
+}
+
+.navbar-brand {
+    color: #F6E54C !important;
+    font-weight: 700;
+    font-size: 36;
+}
+
+.header {
+    font-size: 36;
+    font-weight: 700;
+    color: #663ED6;
+}
+
+.review {
+    width: 465px;
+    height: 280px;
+    background-color: white;
+}
