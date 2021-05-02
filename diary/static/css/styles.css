@@ -1,3 +1,6 @@
+/* add media rules for adaptive design later */
+
+
 /* Roboto font import from Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300&display=swap');
 
@@ -10,12 +13,18 @@
     font-style: normal;
 }
 
+a:hover {
+    transform: scale(1.1);
+}
+
 body {
-    background: repeat url("../images/bg.jpg");
+    background: url("../images/bg.jpg") center/30% repeat;
+    position: relative;
 }
 
 .container {
-    background-color: #F6E54C;
+    background-color: rgba(246,229,76, .9);
+    text-align: center;
 }
 
 .bg-blue {
@@ -28,7 +37,9 @@ body {
 
 .nav-link {
     color: #F6E54C !important;
-    font-size: 20;
+    font-size: 1.25rem;
+    padding-bottom: 0 !important;
+    
 }
 
 .nav-link.active {
@@ -38,17 +49,86 @@ body {
 .navbar-brand {
     color: #F6E54C !important;
     font-weight: 700;
-    font-size: 36;
+    font-size: 2rem !important;
 }
 
 .header {
-    font-size: 36;
+    font-size: 2rem;
     font-weight: 700;
     color: #663ED6;
+    margin-bottom: 30px;
 }
 
 .review {
-    width: 465px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    width: 600px;
     height: 280px;
     background-color: white;
+    border-radius: 50px;
+    margin-bottom: 30px;
+}
+
+.review__descr {
+    min-width: 55%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.beer-image {
+    max-height: 100%;
+    width: 40%;
+    object-fit: contain;
+}
+
+.beer-name {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: #F6E54C;
+}
+
+.beer-type {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #663ED6;
+}
+
+.rating {
+    font-size: 1.25rem;
+    margin-bottom: 1.7rem;
+}
+
+.comments-header {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #000000;
+    margin-bottom: 0;
+}
+
+.comments {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #000000;
+}
+
+.date {
+    text-align: right;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 0.8rem;
+    color: #663ED6;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
 }
