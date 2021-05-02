@@ -20,11 +20,13 @@ a:hover {
 body {
     background: url("../images/bg.jpg") center/30% repeat;
     position: relative;
+    min-height: 100vh;
 }
 
 .container {
     background-color: rgba(246,229,76, .9);
     text-align: center;
+    min-height: 100vh;
 }
 
 .bg-blue {
@@ -57,6 +59,12 @@ body {
     font-weight: 700;
     color: #663ED6;
     margin-bottom: 30px;
+}
+
+.no-content {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #663ED6;
 }
 
 .review {
@@ -124,6 +132,10 @@ body {
     font-weight: 300;
     font-size: 0.8rem;
     color: #663ED6;
+}
+
+ul {
+    list-style-type: none !important;
 }
 
 .footer {

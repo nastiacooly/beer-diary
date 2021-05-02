@@ -1,0 +1,36 @@
+{% extends "base_generic.html" %}
+
+{% block title %}See All{% endblock %}
+
+{% block navbar %}
+    <div class="collapse navbar-collapse" id="navbar">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'index' %}">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="">Add Review</a></li>
+            <li class="nav-item"><a class="nav-link active" href="">See All</a></li>
+            <li class="nav-item"><a class="nav-link" href="">Search</a></li>
+            <li class="nav-item"><a class="nav-link" href="">Filter</a></li>
+        </ul>
+        <ul class="navbar-nav ml-auto mt-2">
+            <li class="nav-item"><a class="nav-link" href="">Log Out</a></li>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block main %}
+    <h3 class="header">Your beer reviews:</h3>
+
+    {% if beerreview_list %}
+
+        <ul class="no-bullets">
+            {% for beer in beerreview_list %}
+            <li>
+                <a href="{{ beer.get_absolute_url }}">{{ beer.name }}</a> ({{ beer.beertype }})
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="no-content">There are no beer reviews in your diary.</p>
+    {% endif %} 
+
+{% endblock %}

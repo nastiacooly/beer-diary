@@ -64,10 +64,3 @@ class BeerReview(models.Model):
         String for representing the Model object.
         """
         return self.name
-
-
-    def get_absolute_url(self):
-        """
-        Returns the url to access a particular beer instance.
-        """
-        return reverse('beer-review-detail', args=[str(self.id)])
