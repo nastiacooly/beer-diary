@@ -10,4 +10,5 @@ urlpatterns = [
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^beers/$', views.BeerReviewListView.as_view(), name='beers'),
+    url(r'^beer/(?P<pk>\d+)$', views.BeerReviewDetailView.as_view(), name='beer-detail'),
 ]

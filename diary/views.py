@@ -23,3 +23,6 @@ def index(request):
 class BeerReviewListView(generic.ListView):
     model = BeerReview
     queryset = BeerReview.objects.all().order_by('name')
+
+class BeerReviewDetailView(generic.DetailView):
+    model = BeerReview

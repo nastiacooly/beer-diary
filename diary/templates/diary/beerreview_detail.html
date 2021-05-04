@@ -1,0 +1,47 @@
+{% extends "base_generic.html" %}
+
+{% block title %}Beer Review: {{ beerreview.name }}{% endblock %}
+
+{% block navbar %}
+    <div class="collapse navbar-collapse" id="navbar">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item"><a class="nav-link" aria-current="page" href="{% url 'index' %}">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="">Add Review</a></li>
+            <li class="nav-item"><a class="nav-link active" href="{% url 'beers' %}">See All</a></li>
+            <li class="nav-item"><a class="nav-link" href="">Search</a></li>
+            <li class="nav-item"><a class="nav-link" href="">Filter</a></li>
+        </ul>
+        <ul class="navbar-nav ml-auto mt-2">
+            <li class="nav-item"><a class="nav-link" href="">Log Out</a></li>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block main %}
+    <h3 class="header">Your {{ beerreview.name }} review:</h3>
+
+    <div class="review">
+        <img src="{{ beerreview.image }}" class="beer-image">
+        <div class="review__descr">
+            <h4 class="beer-name">{{ beerreview.name }}</h4>
+            <h5 class="beer-type">{{ beerreview.beertype}}</h5>
+            {% if beerreview.rating == '1' %}
+                <p class="rating">&#10026;</p>
+            {% elif beerreview.rating == '2' %}
+                <p class="rating">&#10026; &#10026;</p>
+            {% elif beerreview.rating == '3' %}
+                <p class="rating">&#10026; &#10026; &#10026;</p>
+            {% elif beerreview.rating == '4' %}
+                <p class="rating">&#10026; &#10026; &#10026; &#10026;</p>
+            {% elif beerreview.rating == '5' %}
+                <p class="rating">&#10026; &#10026; &#10026; &#10026; &#10026;</p>
+            {% else %}
+                <p class="rating">No rating</p>
+            {% endif %}
+            <h6 class="comments-header">Comments:</h6>
+            <p class="comments">{{ beerreview.comments }}</p>
+            <span class="date"> {{ beerreview.date }} </span>
+        </div>
+    </div>
+
+{% endblock %}
