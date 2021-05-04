@@ -6,49 +6,15 @@
 
     {% if user.is_authenticated %}
 
-        <h3 class="header">Your "Perfect" rated beers:</h3>
-
-        {% if perfect_beers %}
-
-            {% for beer in perfect_beers %}
-            
-            <div class="review">
-                <img src="{{ beer.image }}" class="beer-image">
-                <div class="review__descr">
-                    <h4 class="beer-name">{{ beer.name }}</h4>
-                    <h5 class="beer-type">{{ beer.beertype}}</h5>
-                    {% if beer.rating == '1' %}
-                        <p class="rating">&#10026;</p>
-                    {% elif beer.rating == '2' %}
-                        <p class="rating">&#10026; &#10026;</p>
-                    {% elif beer.rating == '3' %}
-                        <p class="rating">&#10026; &#10026; &#10026;</p>
-                    {% elif beer.rating == '4' %}
-                        <p class="rating">&#10026; &#10026; &#10026; &#10026;</p>
-                    {% elif beer.rating == '5' %}
-                        <p class="rating">&#10026; &#10026; &#10026; &#10026; &#10026;</p>
-                    {% else %}
-                        <p class="rating">No rating</p>
-                    {% endif %}
-                    <h6 class="comments-header">Comments:</h6>
-                    <p class="comments">{{ beer.comments }}</p>
-                    <span class="date"> {{ beer.date }} </span>
-                </div>
-            </div>
-
-            {% endfor %}
-        
-        {% else %}
-            <p class="no-content">There are no beer reviews with "Perfect" rating in your diary yet.</p>
-        {% endif %}
+        <p class="welcome">Welcome to Beer Diary!</p>
+        <p class="no-content">We are happy to see you again!</p>
 
     {% else %}
         <p class="welcome">Welcome to Beer Diary!</p>
         <p class="no-content">Here you can take notes and keep ratings of all the beer you ever tasted!</p>
         <p class="no-content">To create your own Beer Diary, please <a href="">register</a> your account.</p>
         <p class="no-content">If you’re already a user of Beer Diary, please <a href="{% url 'login'%}">Log In</a>.</p>
+        <span class="visits">You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</span>
     {% endif %}
-
-    <span class="visits">You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</span>
 
 {% endblock %}

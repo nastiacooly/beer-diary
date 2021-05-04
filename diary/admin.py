@@ -9,5 +9,5 @@ admin.site.register(BeerType)
 # Define and register the admin class
 @admin.register(BeerReview)
 class BeerAdmin(admin.ModelAdmin):
-    list_display = ('name', 'beertype', 'rating', 'date')
-    list_filter = ('name', 'beertype', 'rating')
+    list_display = ('creator', 'name', 'beertype', 'rating', 'date')
+    list_filter = ('creator', 'name', 'beertype', 'rating')

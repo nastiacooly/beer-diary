@@ -12,3 +12,8 @@ urlpatterns = [
     url(r'^beers/$', views.BeerReviewListView.as_view(), name='beers'),
     url(r'^beer/(?P<pk>\d+)$', views.BeerReviewDetailView.as_view(), name='beer-detail'),
 ]
+
+# Создает путь к обзорам с наивысшим рейтингом залогиненного пользователя
+urlpatterns += [
+    url(r'^myperfectbeers/$', views.PefectBeerReviewsByUserListView.as_view(), name='my-perfect-beers'),
+]
