@@ -1,9 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+
 from .models import BeerReview, BeerType
+from .forms import UpdateBeerReviewForm, AddNewBeerReviewForm
 
 def index(request):
     """
@@ -21,14 +25,14 @@ def index(request):
         context={'num_visits':num_visits},
     )
 
-# Создаем класс для отображения всех обзоров пива
+# Создаем класс для отображения всех обзоров пива в виде списка
 class BeerReviewListView(LoginRequiredMixin, generic.ListView):
     model = BeerReview
     paginate_by = 15
     def get_queryset(self):
         return BeerReview.objects.filter(creator=self.request.user).order_by('name')
 
-# Класс для отображения каждого отдельного обзора
+# Класс для отображения каждого отдельного обзора на отдельной странице
 class BeerReviewDetailView(LoginRequiredMixin, generic.DetailView):
     model = BeerReview
     def get_queryset(self):
@@ -42,3 +46,101 @@ class PefectBeerReviewsByUserListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 5
     def get_queryset(self):
         return BeerReview.objects.filter(creator=self.request.user).filter(rating__exact='5').order_by('name')
+
+
+@login_required
+def add_new_beer_review(request):
+    """
+    Функция отображения формы для добавления нового обзора
+    """
+    if request.method == "POST":
+        form = AddNewBeerReviewForm(request.POST)
+
+        # Проверка валидности данных формы:
+        if form.is_valid():
+            # Обработка данных из form.cleaned_data
+            # и добавление записи в базу данных
+            new_beer_review = BeerReview(
+                creator=request.user, 
+                image=form.cleaned_data['beer_image'], 
+                name=form.cleaned_data['beer_name'],
+                beertype=form.cleaned_data['beer_type'],
+                rating=form.cleaned_data['beer_rating'],
+                comments=form.cleaned_data['comments']
+            )
+            
+            new_beer_review.save()
+
+            # Переход по адресу 'beers' (see all):
+            return HttpResponseRedirect(reverse('beers') )
+
+    # Если GET, создать форму по умолчанию.
+    else:
+        form = AddNewBeerReviewForm()
+
+    return render(
+        request, 
+        'diary/add_new_beer_review.html', 
+        context={'form': form},
+    )
+
+
+@login_required
+def update_beer_review(request, pk):
+    """
+    Функция отображения формы для изменения/обновления обзора
+    """
+    beer_review = get_object_or_404(BeerReview, pk=pk)
+
+    if request.method == "POST":
+        form = UpdateBeerReviewForm(request.POST)
+
+        # Проверка валидности данных формы:
+        if form.is_valid():
+            # Обработка данных из form.cleaned_data
+            # и сохранение базы данных
+            beer_review.image = form.cleaned_data['beer_image']
+            beer_review.name = form.cleaned_data['beer_name']
+            beer_review.beertype = form.cleaned_data['beer_type']
+            beer_review.rating = form.cleaned_data['beer_rating']
+            beer_review.comments = form.cleaned_data['comments']
+            
+            beer_review.save()
+
+            # Переход по адресу 'beers' (see all):
+            return HttpResponseRedirect(reverse('beers') )
+
+    # Если это GET, создать форму по умолчанию.
+    else:
+        form = UpdateBeerReviewForm(initial={
+            'beer_image': beer_review.image, 
+            'beer_name': beer_review.name, 
+            'beer_type': beer_review.beertype, 
+            'beer_rating': beer_review.rating, 
+            'comments': beer_review.comments
+            })
+
+    return render(
+        request, 
+        'diary/update_beer_review.html', 
+        context={'form': form, 'beer_review': beer_review},
+    )
+
+@login_required
+def delete_beer_review(request, pk):
+    """
+    Функция отображения для удаления обзора
+    """
+    beer_review = get_object_or_404(BeerReview, pk=pk)
+
+    if request.method == "POST":
+        beer_review.delete()
+
+        # Переход по адресу 'beers' (see all):
+        return HttpResponseRedirect(reverse('beers') )
+    
+    return render(
+        request,
+        'diary/delete_beer_review.html',
+        context={'beer_review': beer_review},
+    )

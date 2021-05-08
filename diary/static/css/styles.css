@@ -140,6 +140,18 @@ body {
     color: #663ED6;
 }
 
+.link-update {
+    color: #663ED6;
+    font-size: 1rem;
+}
+
+.link-update:hover {
+    color: #663ED6;
+    text-decoration: none;
+    font-weight: bold;
+    transform: none;
+}
+
 ul {
     list-style-type: none !important;
 }

@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block title %}Delete Review of {{ beer_review.name }}{% endblock %}
+
+{% block main %}
+
+    <h1 class="no-content">Are you sure you want to delete your review of {{ beer_review.name }}?</h1>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Yes" />
+    </form>
+
+    <a href="{% url 'beers'%}">No, back to my list of reviews</a>
+
+{% endblock %}

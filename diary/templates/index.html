@@ -11,7 +11,7 @@
 
     {% else %}
         <p class="welcome">Welcome to Beer Diary!</p>
-        <p class="no-content">Here you can take notes and keep ratings of all the beer you ever tasted!</p>
+        <p class="no-content">Here you can take notes about and keep ratings of all the beer you ever tasted!</p>
         <p class="no-content">To create your own Beer Diary, please <a href="">register</a> your account.</p>
         <p class="no-content">If you’re already a user of Beer Diary, please <a href="{% url 'login'%}">Log In</a>.</p>
         <span class="visits">You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</span>

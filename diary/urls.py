@@ -17,3 +17,18 @@ urlpatterns = [
 urlpatterns += [
     url(r'^myperfectbeers/$', views.PefectBeerReviewsByUserListView.as_view(), name='my-perfect-beers'),
 ]
+
+# Создает путь к форме обновления обзора
+urlpatterns += [
+    url(r'^beer/(?P<pk>\d+)/update/$', views.update_beer_review, name='update_beer_review'),
+]
+
+# Создает путь к форме добавления обзора
+urlpatterns += [
+    url(r'^beer/create/$', views.add_new_beer_review, name='add_new_beer_review'),
+]
+
+# Создает путь к удалению обзора
+urlpatterns += [
+    url(r'^beer/(?P<pk>\d+)/delete/$', views.delete_beer_review, name='delete_beer_review'),
+]

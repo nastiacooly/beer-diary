@@ -1,0 +1,17 @@
+{% extends "base_generic.html" %}
+
+{% block title %}Update Beer Review: {{ beer_review.name }}{% endblock %}
+
+{% block main %}
+
+    <h1 class="no-content">Please update your review below:</h1>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <table>
+        {{ form }}
+        </table>
+        <input type="submit" value="Submit" />
+    </form>
+
+{% endblock %}

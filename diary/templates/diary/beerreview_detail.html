@@ -30,6 +30,8 @@ active
             <h6 class="comments-header">Comments:</h6>
             <p class="comments">{{ beerreview.comments }}</p>
             <span class="date"> {{ beerreview.date }} </span>
+            <a href="{% url 'update_beer_review' beerreview.id %}" class="link-update">Update</a>
+            <a href="{% url 'delete_beer_review' beerreview.id %}" class="link-update">Delete</a>
         </div>
     </div>
 
