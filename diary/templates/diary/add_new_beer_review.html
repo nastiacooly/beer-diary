@@ -2,6 +2,10 @@
 
 {% block title %}Add New Beer Review{% endblock %}
 
+{% block active-link-2 %}
+active
+{% endblock %}
+
 {% block main %}
 
     <h1 class="no-content">Please add your review by completing the fields below:</h1>
@@ -11,7 +15,7 @@
         <table>
         {{ form }}
         </table>
-        <input type="submit" value="Submit" />
+        <button class="btn btn-primary" type="submit">Save and Quit</button>
     </form>
 
 {% endblock %}

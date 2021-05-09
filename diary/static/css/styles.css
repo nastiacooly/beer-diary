@@ -162,3 +162,16 @@ ul {
     left: 50%;
     transform: translateX(-50%);
 }
+
+
+
+/* crispy forms styles */
+.help-block {
+    font-size: 0.8rem;
+    color: #663ED6;
+}
+
+.controls>ul {
+    font-size: 0.8rem;
+    color: #663ED6;
+}

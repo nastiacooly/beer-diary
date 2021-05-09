@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block active-link-7 %}
+active
+{% endblock %}
+
+{% block main %}
+
+{% load crispy_forms_tags %}
+
+    <p class='no-content'>Register</p>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ register_form|crispy }}
+        <button class="btn btn-primary" type="submit">Register</button>
+    </form>
+    <p class="no-content">If you’re already a user of Beer Diary, please <a href="{% url 'login'%}">login</a> instead.</p>
+
+{% endblock %}

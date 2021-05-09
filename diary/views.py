@@ -1,5 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
+from django.contrib.auth import login
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 
@@ -7,7 +9,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 
 from .models import BeerReview, BeerType
-from .forms import UpdateBeerReviewForm, AddNewBeerReviewForm
+from .forms import UpdateBeerReviewForm, AddNewBeerReviewForm, NewUserForm
 
 def index(request):
     """
@@ -23,6 +25,29 @@ def index(request):
         request,
         'index.html',
         context={'num_visits':num_visits},
+    )
+
+def register_request(request):
+    """
+    Функция отображения регистрационной формы
+    """
+    if request.method == "POST":
+        form = NewUserForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            messages.success(request, f"Registration succesful. You are now logged in as {request.user}.")
+            return redirect('index')
+        messages.error(
+            request, 
+            "Unsuccessful registration. Invalid information. Please read the requirements carefully and be sure to complete all the required(*) fields."
+            )
+    
+    form = NewUserForm()
+    return render(
+        request,
+        'register.html',
+        context={"register_form": form}
     )
 
 # Создаем класс для отображения всех обзоров пива в виде списка
@@ -90,7 +115,8 @@ def update_beer_review(request, pk):
     """
     Функция отображения формы для изменения/обновления обзора
     """
-    beer_review = get_object_or_404(BeerReview, pk=pk)
+    # Get beer review object only if the requester is the creator of the review or 404
+    beer_review = get_object_or_404(BeerReview.objects.filter(creator=request.user), pk=pk)
 
     if request.method == "POST":
         form = UpdateBeerReviewForm(request.POST)
@@ -131,7 +157,8 @@ def delete_beer_review(request, pk):
     """
     Функция отображения для удаления обзора
     """
-    beer_review = get_object_or_404(BeerReview, pk=pk)
+    # Get beer review object only if the requester is the creator of the review or 404
+    beer_review = get_object_or_404(BeerReview.objects.filter(creator=request.user), pk=pk)
 
     if request.method == "POST":
         beer_review.delete()
