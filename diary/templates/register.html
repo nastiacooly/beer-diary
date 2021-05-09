@@ -10,12 +10,12 @@ active
 
 {% load crispy_forms_tags %}
 
-    <p class='no-content'>Register</p>
+    <p class='no-content font-color_second'>Register</p>
     <form action="" method="POST">
         {% csrf_token %}
         {{ register_form|crispy }}
         <button class="btn btn-primary" type="submit">Register</button>
     </form>
-    <p class="no-content">If you’re already a user of Beer Diary, please <a href="{% url 'login'%}">login</a> instead.</p>
+    <p class="no-content font-color_second">If you’re already a user of Beer Diary, please <a href="{% url 'login'%}">login</a> instead.</p>
 
 {% endblock %}

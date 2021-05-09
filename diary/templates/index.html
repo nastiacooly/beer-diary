@@ -6,15 +6,15 @@
 
     {% if user.is_authenticated %}
 
-        <p class="welcome">Welcome to Beer Diary!</p>
-        <p class="no-content">We are happy to see you today!</p>
+        <p class="welcome font-color_second">Welcome to Beer Diary!</p>
+        <p class="no-content font-color_second">We are happy to see you today!</p>
 
     {% else %}
-        <p class="welcome">Welcome to Beer Diary!</p>
-        <p class="no-content">Here you can take notes about and keep ratings of all the beer you ever tasted!</p>
-        <p class="no-content">To create your own Beer Diary, please <a href="{% url 'register' %}">register</a> your account.</p>
-        <p class="no-content">If you’re already a user of Beer Diary, please <a href="{% url 'login'%}">login</a>.</p>
-        <span class="visits">You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</span>
+        <p class="welcome font-color_second">Welcome to Beer Diary!</p>
+        <p class="no-content font-color_second">Here you can take notes about and keep ratings of all the beer you ever tasted!</p>
+        <p class="no-content font-color_second">To create your own Beer Diary, please <a href="{% url 'register' %}">register</a> your account.</p>
+        <p class="no-content font-color_second">If you’re already a user of Beer Diary, please <a href="{% url 'login'%}">login</a>.</p>
+        <span class="visits font-color_second">You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</span>
     {% endif %}
 
 {% endblock %}

@@ -1,0 +1,33 @@
+.bg-image {
+    background: url("../images/bg.jpg") center/30% repeat;
+}
+
+.container_bg-color {
+    background-color: rgba(246,229,76, .9);
+}
+
+.bg-color {
+    background-color: #663ED6;
+}
+
+.bg-color_white {
+    background-color: white;
+}
+
+.font-color {
+    color: #F6E54C !important;
+}
+
+.font-color_second {
+    color: #663ED6;
+}
+
+
+/* crispy forms styles */
+.help-block {
+    color: #663ED6;
+}
+
+.controls>ul {
+    color: #663ED6;
+}

@@ -14,11 +14,11 @@ active
 
         {% for beer in beer_reviews_perfect_list %}
         
-        <div class="review">
+        <div class="review bg-color_white">
             <img src="{{ beer.image }}" class="beer-image">
             <div class="review__descr">
-                <h4 class="beer-name">{{ beer.name }}</h4>
-                <h5 class="beer-type">{{ beer.beertype}}</h5>
+                <h4 class="beer-name font-color">{{ beer.name }}</h4>
+                <h5 class="beer-type font-color_second">{{ beer.beertype}}</h5>
                 {% if beer.rating == '1' %}
                     <p class="rating">&#10026;</p>
                 {% elif beer.rating == '2' %}
@@ -34,16 +34,16 @@ active
                 {% endif %}
                 <h6 class="comments-header">Comments:</h6>
                 <p class="comments">{{ beer.comments }}</p>
-                <span class="date"> {{ beer.date }} </span>
-                <a href="{% url 'update_beer_review' beer.id %}" class="link-update">Update</a>
-                <a href="{% url 'delete_beer_review' beer.id %}" class="link-update">Delete</a>
+                <span class="date font-color_second"> {{ beer.date }} </span>
+                <a href="{% url 'update_beer_review' beer.id %}" class="link-update font-color_second">Update</a>
+                <a href="{% url 'delete_beer_review' beer.id %}" class="link-update font-color_second">Delete</a>
             </div>
         </div>
 
         {% endfor %}
     
     {% else %}
-        <p class="no-content">There are no beer reviews with "Perfect" rating in your diary yet.</p>
+        <p class="no-content font-color_second">There are no beer reviews with "Perfect" rating in your diary yet.</p>
     {% endif %}
 
 {% endblock %}

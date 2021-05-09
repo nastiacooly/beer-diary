@@ -18,19 +18,13 @@ a:hover {
 }
 
 body {
-    background: url("../images/bg.jpg") center/30% repeat;
     position: relative;
     min-height: 100vh;
 }
 
 .container {
-    background-color: rgba(246,229,76, .9);
     text-align: center;
     min-height: 100vh;
-}
-
-.bg-blue {
-    background-color: #663ED6;
 }
 
 .main-icon {
@@ -38,7 +32,6 @@ body {
 }
 
 .nav-link {
-    color: #F6E54C !important;
     font-size: 1.25rem;
     padding-bottom: 0 !important;
     
@@ -49,7 +42,6 @@ body {
 }
 
 .navbar-brand {
-    color: #F6E54C !important;
     font-weight: 700;
     font-size: 2rem !important;
 }
@@ -57,20 +49,17 @@ body {
 .header {
     font-size: 2rem;
     font-weight: 700;
-    color: #663ED6;
     margin-bottom: 30px;
 }
 
 .no-content {
     font-size: 1.7rem;
     font-weight: 700;
-    color: #663ED6;
 }
 
 .welcome {
     font-size: 3rem;
     font-weight: 700;
-    color: #663ED6;
 }
 
 .review {
@@ -80,7 +69,6 @@ body {
     padding: 20px;
     width: 600px;
     height: 280px;
-    background-color: white;
     border-radius: 50px;
     margin-bottom: 30px;
 }
@@ -102,14 +90,12 @@ body {
     font-style: normal;
     font-weight: 700;
     font-size: 1.8rem;
-    color: #F6E54C;
 }
 
 .beer-type {
     font-style: normal;
     font-weight: 700;
     font-size: 1.25rem;
-    color: #663ED6;
 }
 
 .rating {
@@ -137,16 +123,13 @@ body {
     font-style: italic;
     font-weight: 300;
     font-size: 0.8rem;
-    color: #663ED6;
 }
 
 .link-update {
-    color: #663ED6;
     font-size: 1rem;
 }
 
 .link-update:hover {
-    color: #663ED6;
     text-decoration: none;
     font-weight: bold;
     transform: none;
@@ -163,15 +146,18 @@ ul {
     transform: translateX(-50%);
 }
 
+.switch-dm {
+    position: fixed;
+    bottom: 50%;
+    right: 0;
+}
 
 
 /* crispy forms styles */
 .help-block {
     font-size: 0.8rem;
-    color: #663ED6;
 }
 
 .controls>ul {
     font-size: 0.8rem;
-    color: #663ED6;
 }
