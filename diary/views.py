@@ -9,7 +9,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 
 from .models import BeerReview, BeerType
-from .forms import UpdateBeerReviewForm, AddNewBeerReviewForm, NewUserForm
+from .forms import UpdateBeerReviewForm, AddNewBeerReviewForm, NewUserForm, SearchBeerForm
 
 def index(request):
     """
@@ -98,6 +98,10 @@ def add_new_beer_review(request):
 
             # Переход по адресу 'beers' (see all):
             return HttpResponseRedirect(reverse('beers') )
+        messages.error(
+            request, 
+            "Your beer review contains invalid data. Please try again."
+            )
 
     # Если GET, создать форму по умолчанию.
     else:
@@ -135,6 +139,10 @@ def update_beer_review(request, pk):
 
             # Переход по адресу 'beers' (see all):
             return HttpResponseRedirect(reverse('beers') )
+        messages.error(
+            request, 
+            "Your beer review contains invalid data. Please try again."
+            )
 
     # Если это GET, создать форму по умолчанию.
     else:
@@ -170,4 +178,30 @@ def delete_beer_review(request, pk):
         request,
         'diary/delete_beer_review.html',
         context={'beer_review': beer_review},
+    )
+
+@login_required
+def beer_search(request):
+    """
+    Функция отображения для поиска обзора
+    """
+    reviews = []
+    form = SearchBeerForm()
+    query = request.GET.get('beer_name')
+    if query:
+        reviews = BeerReview.objects.filter(creator=request.user
+            ).filter(name__icontains=query
+            ).order_by('name')
+        if reviews:
+            messages.success(request, "Found")
+        else:
+            messages.error(
+            request,
+            "Not found in your diary"
+        )
+
+    return render(
+        request,
+        'diary/search.html',
+        context={"form": form, 'reviews': reviews},
     )

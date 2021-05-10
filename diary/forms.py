@@ -51,3 +51,6 @@ class UpdateBeerReviewForm(forms.Form):
     beer_type = forms.ModelChoiceField(queryset=BeerType.objects.all(), empty_label=None, help_text='Choose a beer type')
     beer_rating = forms.ChoiceField(choices=RATINGS, help_text='Choose beer rating')
     comments = forms.CharField(max_length=500, help_text='Enter your additional comments concerning this beer')
+
+class SearchBeerForm(forms.Form):
+    beer_name = forms.CharField(help_text='Enter beer name for search', required=True)

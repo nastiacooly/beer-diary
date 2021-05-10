@@ -10,7 +10,8 @@ urlpatterns = [
 ]
 
 urlpatterns += [
-    url(r'^register/$', views.register_request, name="register")
+    url(r'^register/$', views.register_request, name="register"),
+    url(r'^search/$', views.beer_search, name="search"),
 ]
 
 # Создает путь к обзорам с наивысшим рейтингом залогиненного пользователя
