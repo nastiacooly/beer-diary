@@ -1,5 +1,6 @@
 .bg-image {
     background: url("../images/bg.jpg") center/30% repeat;
+    backdrop-filter: grayscale(1);
 }
 
 .container_bg-color {
