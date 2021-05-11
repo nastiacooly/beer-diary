@@ -9,7 +9,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 
 from .models import BeerReview, BeerType
-from .forms import UpdateBeerReviewForm, AddNewBeerReviewForm, NewUserForm, SearchBeerForm
+from .forms import UpdateBeerReviewForm, AddNewBeerReviewForm, NewUserForm, SearchBeerForm, FilterReviewsForm
 
 def index(request):
     """
@@ -204,4 +204,51 @@ def beer_search(request):
         request,
         'diary/search.html',
         context={"form": form, 'reviews': reviews},
+    )
+
+@login_required
+def beers_filter(request):
+    """
+    Функция отображения для фильтрации обзоров (по типу и рейтингу)
+    """
+
+    reviews = []
+
+    def check_result():
+        """
+        For success/error messages depending on filter results
+        """
+        if reviews:
+            messages.success(request, "Found filter match")
+        else:
+            messages.error(
+            request,
+            "No filter match"
+        )
+    
+    form = FilterReviewsForm(initial={'beer_rating': '---'})
+    query_type = request.GET.get('beer_type')
+    query_rating = request.GET.get('beer_rating')
+
+    if query_type and query_rating:
+        reviews = BeerReview.objects.filter(creator=request.user
+            ).filter(beertype__exact=query_type
+            ).filter(rating__exact=query_rating
+            ).order_by('name')
+        check_result()
+    elif query_type and not query_rating:
+        reviews = BeerReview.objects.filter(creator=request.user
+            ).filter(beertype__exact=query_type
+            ).order_by('name')
+        check_result()
+    elif query_rating and not query_type:
+        reviews = BeerReview.objects.filter(creator=request.user
+            ).filter(rating__exact=query_rating
+            ).order_by('name')
+        check_result()
+
+    return render(
+        request,
+        'diary/filter.html',
+        context={'form': form, 'reviews': reviews},
     )

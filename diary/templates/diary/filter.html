@@ -1,0 +1,54 @@
+{% extends "base_generic.html" %}
+
+{% block title %}Filter{% endblock %}
+
+{% block active-link-5 %}
+active
+{% endblock %}
+
+{% block main %}
+
+    <h1 class="no-content font-color_second">Here you can filter your diary reviews by beer type and rating:</h1>
+
+    <form action="{% url 'filter' %}" method="get">
+        <table>
+        {{ form }}
+        </table>
+        <button class="btn btn-primary" type="submit">Filter</button>
+    </form>
+    
+    {% if reviews %}
+
+        {% for beer in reviews %}
+
+            <div class="review bg-color_white">
+                <img src="{{ beer.image }}" class="beer-image">
+                <div class="review__descr">
+                    <h4 class="beer-name font-color">{{ beer.name }}</h4>
+                    <h5 class="beer-type font-color_second">{{ beer.beertype}}</h5>
+                    {% if beer.rating == '1' %}
+                        <p class="rating">&#10026;</p>
+                    {% elif beer.rating == '2' %}
+                        <p class="rating">&#10026; &#10026;</p>
+                    {% elif beer.rating == '3' %}
+                        <p class="rating">&#10026; &#10026; &#10026;</p>
+                    {% elif beer.rating == '4' %}
+                        <p class="rating">&#10026; &#10026; &#10026; &#10026;</p>
+                    {% elif beer.rating == '5' %}
+                        <p class="rating">&#10026; &#10026; &#10026; &#10026; &#10026;</p>
+                    {% else %}
+                        <p class="rating">No rating</p>
+                    {% endif %}
+                    <h6 class="comments-header">Comments:</h6>
+                    <p class="comments">{{ beer.comments }}</p>
+                    <span class="date font-color_second"> {{ beer.date }} </span>
+                    <a href="{% url 'update_beer_review' beer.id %}" class="link-update font-color_second">Update</a>
+                    <a href="{% url 'delete_beer_review' beer.id %}" class="link-update font-color_second">Delete</a>
+                </div>
+            </div>
+
+        {% endfor %}
+
+    {% endif %}
+
+{% endblock %}
