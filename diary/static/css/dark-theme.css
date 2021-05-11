@@ -3,32 +3,61 @@
     backdrop-filter: grayscale(1);
 }
 
-.container_bg-color {
-    background-color: rgba(246,229,76, .9);
+.beer-image {
+    filter: contrast(0.9) grayscale(0.5);
 }
 
-.bg-color {
-    background-color: black;
+.container_bgc {
+    background-color: RGBA(65, 65, 65, .6);
 }
 
-.bg-color_white {
-    background-color: white;
+.button_dt, a.button_dt {
+    color: RGBA(238, 238, 238, .87);
+    background-color: #525252;
 }
 
-.font-color {
-    color: #F6E54C !important;
+.button_dt:hover, a.button:hover {
+    background-color: RGBA(53, 53, 53, .87);
 }
 
-.font-color_second {
-    color: #663ED6;
+.review_bgc, .list_container, form {
+    background-color: #EEE;
+}
+
+.navbar_bgc {
+    background-color: #525252;
+}
+
+.footer {
+    color: #EEE;
+}
+
+.navlink-fc, .fcolor_light {
+    color: RGBA(238, 238, 238, .87) !important;
+}
+
+.fcolor_accent_dt, a.fcolor_accent_dt {
+    color: RGBA(202, 62, 71, .87);
+}
+
+.fcolor_medium, .beer_li_span {
+    color: RGBA(49, 49, 49, .87);
+}
+
+.fcolor_accent_dt_light {
+    color: RGBA(202, 62, 71, .38);
+}
+
+.fcolor_black {
+    color: RGBA(65, 65, 65, .6);
 }
 
 
 /* crispy forms styles */
 .help-block {
-    color: #663ED6;
+    color: RGBA(49, 49, 49, .87)
 }
 
 .controls>ul {
-    color: #663ED6;
+    color: RGBA(49, 49, 49, .87)
 }

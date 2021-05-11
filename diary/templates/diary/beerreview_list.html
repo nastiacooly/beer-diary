@@ -7,19 +7,24 @@ active
 {% endblock %}
 
 {% block main %}
-    <h3 class="header font-color_second">List of your beer reviews:</h3>
+    <h3 class="header fcolor_light">List of your beer reviews:</h3>
 
-    {% if beerreview_list %}
+    <div class="list_container">
 
-        <ul>
-            {% for beer in beerreview_list %}
-            <li>
-                <a href="{{ beer.get_absolute_url }}">{{ beer.name }}</a> ({{ beer.beertype }})
-            </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p class="no-content font-color_second">There are no beer reviews in your diary.</p>
-    {% endif %} 
+        {% if beerreview_list %}
+
+            <ul>
+                {% for beer in beerreview_list %}
+                <li>
+                    <a href="{{ beer.get_absolute_url }}" class="beer_li fcolor_dark fcolor_accent_dt">{{ beer.name }}</a> 
+                    <span class="beer_li_span">({{ beer.beertype }})</span>
+                </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="no-content fcolor_light">There are no beer reviews in your diary.</p>
+        {% endif %} 
+
+    </div>
 
 {% endblock %}

@@ -27,10 +27,10 @@
 
     <body class="bg-image">
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-color">
+        <nav class="navbar navbar-expand-lg navbar-light navbar_bgc">
             <div class="container-fluid">
                 <img src="{% static 'images/beer.png'%}" alt="beer_diary" class="main-icon">
-                <a class="navbar-brand font-color" href="{% url 'index' %}">Beer Diary</a>
+                <a class="navbar-brand navlink-fc" href="{% url 'index' %}">Beer Diary</a>
                 <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar" data-toggle="collapse" type="button">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -38,20 +38,20 @@
                     <div class="collapse navbar-collapse" id="navbar">
                         {% if user.is_authenticated %}
                             <ul class="navbar-nav mr-auto">
-                                <li class="nav-item"><a class="nav-link font-color {% block active-link-1 %}{% endblock %}" aria-current="page" href="{% url 'my-perfect-beers' %}">My Favourites</a></li>
-                                <li class="nav-item"><a class="nav-link font-color {% block active-link-2 %}{% endblock %}" href="{% url 'add_new_beer_review' %}">Add Review</a></li>
-                                <li class="nav-item"><a class="nav-link font-color {% block active-link-3 %}{% endblock %}" href="{% url 'beers' %}">See All</a></li>
-                                <li class="nav-item"><a class="nav-link font-color {% block active-link-4 %}{% endblock %}" href="{% url 'search' %}">Search</a></li>
-                                <li class="nav-item"><a class="nav-link font-color {% block active-link-5 %}{% endblock %}" href="{% url 'filter' %}">Filter</a></li>
+                                <li class="nav-item"><a class="nav-link navlink-fc {% block active-link-1 %}{% endblock %}" aria-current="page" href="{% url 'my-perfect-beers' %}">My Favourites</a></li>
+                                <li class="nav-item"><a class="nav-link navlink-fc {% block active-link-2 %}{% endblock %}" href="{% url 'add_new_beer_review' %}">Add Review</a></li>
+                                <li class="nav-item"><a class="nav-link navlink-fc {% block active-link-3 %}{% endblock %}" href="{% url 'beers' %}">See All</a></li>
+                                <li class="nav-item"><a class="nav-link navlink-fc {% block active-link-4 %}{% endblock %}" href="{% url 'search' %}">Search</a></li>
+                                <li class="nav-item"><a class="nav-link navlink-fc {% block active-link-5 %}{% endblock %}" href="{% url 'filter' %}">Filter</a></li>
                             </ul>
                             <ul class="navbar-nav ml-auto mt-2">
-                                <li class="nav-item"><a class="nav-link font-color" href="">{{ user.get_username }}</a></li>
-                                <li class="nav-item"><a class="nav-link font-color" href="{% url 'logout'%}">Log Out</a></li>
+                                <li class="nav-item"><a class="nav-link navlink-fc" href="">{{ user.get_username }}</a></li>
+                                <li class="nav-item"><a class="nav-link navlink-fc" href="{% url 'logout'%}">Log Out</a></li>
                             </ul>
                         {% else %}
                             <ul class="navbar-nav ml-auto mt-2">
-                                <li class="nav-item"><a class="nav-link font-color {% block active-link-6 %}{% endblock %}" href="{% url 'login'%}?next={{request.path}}">Log In</a></li>
-                                <li class="nav-item"><a class="nav-link font-color {% block active-link-7 %}{% endblock %}" href="{% url 'register' %}">Register</a></li>
+                                <li class="nav-item"><a class="nav-link navlink-fc {% block active-link-6 %}{% endblock %}" href="{% url 'login'%}?next={{request.path}}">Log In</a></li>
+                                <li class="nav-item"><a class="nav-link navlink-fc {% block active-link-7 %}{% endblock %}" href="{% url 'register' %}">Register</a></li>
                             </ul>
                         {% endif %}
                     </div>
@@ -59,7 +59,7 @@
             </div>
         </nav>
 
-        <main class="container p-5 container_bg-color">
+        <main class="container p-5 container_bgc">
 
             {% include 'includes/messages.html' %}
 

@@ -13,8 +13,17 @@
     font-style: normal;
 }
 
+a {
+    color: white;
+    text-decoration: none;
+}
+
 a:hover {
-    transform: scale(1.1);
+    color: white;
+}
+
+a.button:hover {
+    text-decoration: none;
 }
 
 body {
@@ -23,8 +32,92 @@ body {
 }
 
 .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
     min-height: 100vh;
+}
+
+.reviews_container {
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.list_container {
+    width: 100%;
+    border-radius: 50px;
+    padding: 10px;
+}
+
+form {
+    margin-top: 15px;
+    width: 60%;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+}
+
+.delete-form {
+    padding: 1rem 7rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+table {
+    width: 100%;
+}
+
+tr {
+    vertical-align: top;
+}
+
+label, .beer_li {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+input, select {
+    width: 80%;
+    height: 2rem;
+    text-align: center;
+}
+
+.helptext {
+    font-style: italic;
+    font-weight: 300;
+    font-size: 0.5rem;
+}
+
+#id_comments {
+    height: 9rem;
+    border-radius: 0;
+}
+
+.button {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: background-color 0.15s ease-in-out;
 }
 
 .main-icon {
@@ -35,6 +128,10 @@ body {
     font-size: 1.25rem;
     padding-bottom: 0 !important;
     
+}
+
+.nav-link:hover {
+    transform: scale(1.1) !important;
 }
 
 .nav-link.active {
@@ -63,11 +160,10 @@ body {
 }
 
 .review {
-    margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
     padding: 20px;
-    width: 600px;
+    width: 450px;
     height: 280px;
     border-radius: 50px;
     margin-bottom: 30px;
@@ -125,8 +221,13 @@ body {
     font-size: 0.8rem;
 }
 
+.update_links {
+    display: flex;
+}
+
 .link-update {
     font-size: 1rem;
+    margin-right: 15px;
 }
 
 .link-update:hover {
@@ -152,6 +253,9 @@ ul {
     right: 0;
 }
 
+.visits {
+    margin-top: 50px;
+}
 
 /* crispy forms styles */
 .help-block {

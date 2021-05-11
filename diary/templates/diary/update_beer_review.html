@@ -4,14 +4,14 @@
 
 {% block main %}
 
-    <h1 class="no-content font-color_second">Please update your review below:</h1>
+    <h1 class="no-content fcolor_light">Please update your review below:</h1>
 
     <form action="" method="post">
         {% csrf_token %}
         <table>
         {{ form }}
         </table>
-        <button class="btn btn-primary" type="submit">Update</button>
+        <button class="button button_lt button_dt" type="submit">Update</button>
     </form>
 
 {% endblock %}

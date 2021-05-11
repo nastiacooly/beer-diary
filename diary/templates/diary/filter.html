@@ -8,47 +8,53 @@ active
 
 {% block main %}
 
-    <h1 class="no-content font-color_second">Here you can filter your diary reviews by beer type and rating:</h1>
+    <h1 class="no-content fcolor_light">Here you can filter your diary reviews by beer type and rating:</h1>
 
     <form action="{% url 'filter' %}" method="get">
         <table>
         {{ form }}
         </table>
-        <button class="btn btn-primary" type="submit">Filter</button>
+        <button class="button button_lt button_dt" type="submit">Filter</button>
     </form>
     
-    {% if reviews %}
+    <div class="reviews_container">
 
-        {% for beer in reviews %}
+        {% if reviews %}
 
-            <div class="review bg-color_white">
-                <img src="{{ beer.image }}" class="beer-image">
-                <div class="review__descr">
-                    <h4 class="beer-name font-color">{{ beer.name }}</h4>
-                    <h5 class="beer-type font-color_second">{{ beer.beertype}}</h5>
-                    {% if beer.rating == '1' %}
-                        <p class="rating">&#10026;</p>
-                    {% elif beer.rating == '2' %}
-                        <p class="rating">&#10026; &#10026;</p>
-                    {% elif beer.rating == '3' %}
-                        <p class="rating">&#10026; &#10026; &#10026;</p>
-                    {% elif beer.rating == '4' %}
-                        <p class="rating">&#10026; &#10026; &#10026; &#10026;</p>
-                    {% elif beer.rating == '5' %}
-                        <p class="rating">&#10026; &#10026; &#10026; &#10026; &#10026;</p>
-                    {% else %}
-                        <p class="rating">No rating</p>
-                    {% endif %}
-                    <h6 class="comments-header">Comments:</h6>
-                    <p class="comments">{{ beer.comments }}</p>
-                    <span class="date font-color_second"> {{ beer.date }} </span>
-                    <a href="{% url 'update_beer_review' beer.id %}" class="link-update font-color_second">Update</a>
-                    <a href="{% url 'delete_beer_review' beer.id %}" class="link-update font-color_second">Delete</a>
+            {% for beer in reviews %}
+
+                <div class="review review_bgc">
+                    <img src="{{ beer.image }}" class="beer-image">
+                    <div class="review__descr">
+                        <h4 class="beer-name fcolor_dark fcolor_accent_dt">{{ beer.name }}</h4>
+                        <h5 class="beer-type fcolor_medium">{{ beer.beertype}}</h5>
+                        {% if beer.rating == '1' %}
+                            <p class="rating fcolor_black">&#10026;</p>
+                        {% elif beer.rating == '2' %}
+                            <p class="rating fcolor_black">&#10026; &#10026;</p>
+                        {% elif beer.rating == '3' %}
+                            <p class="rating fcolor_black">&#10026; &#10026; &#10026;</p>
+                        {% elif beer.rating == '4' %}
+                            <p class="rating fcolor_black">&#10026; &#10026; &#10026; &#10026;</p>
+                        {% elif beer.rating == '5' %}
+                            <p class="rating fcolor_black">&#10026; &#10026; &#10026; &#10026; &#10026;</p>
+                        {% else %}
+                            <p class="rating fcolor_black">No rating</p>
+                        {% endif %}
+                        <h6 class="comments-header fcolor_black">Comments:</h6>
+                        <p class="comments fcolor_black">{{ beer.comments }}</p>
+                        <span class="date fcolor_medium fcolor_accent_dt_light"> {{ beer.date }} </span>
+                        <div class="update_links">
+                            <a href="{% url 'update_beer_review' beer.id %}" class="link-update fcolor_dark fcolor_accent_dt">Update</a>
+                            <a href="{% url 'delete_beer_review' beer.id %}" class="link-update fcolor_dark fcolor_accent_dt">Delete</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-        {% endfor %}
+            {% endfor %}
 
-    {% endif %}
+        {% endif %}
+    
+    </div>
 
 {% endblock %}

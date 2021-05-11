@@ -4,13 +4,12 @@
 
 {% block main %}
 
-    <h1 class="no-content font-color_second">Are you sure you want to delete your review of {{ beer_review.name }}?</h1>
+    <h1 class="no-content fcolor_light">Are you sure you want to delete your review of {{ beer_review.name }}?</h1>
 
-    <form action="" method="post">
+    <form action="" method="post" class="delete-form">
         {% csrf_token %}
-        <button class="btn btn-primary" type="submit">Yes</button>
+        <button class="button button_lt button_dt" type="submit">Yes</button>
+        <a href="{% url 'beers'%}" class="button button_lt button_dt">No, back to my list</a>
     </form>
-
-    <a href="{% url 'beers'%}">No, back to my list of reviews</a>
 
 {% endblock %}

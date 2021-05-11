@@ -2,32 +2,53 @@
     background: url("../images/bg.jpg") center/30% repeat;
 }
 
-.container_bg-color {
-    background-color: rgba(246,229,76, .9);
+.container_bgc {
+    background-color: RGBA(88, 28, 12, .7);
 }
 
-.bg-color {
-    background-color: #663ED6;
+.review_bgc, form, .list_container {
+    background-color: #FFF;
 }
 
-.bg-color_white {
-    background-color: white;
+.navbar_bgc {
+    background-color: #F1E3CB;
 }
 
-.font-color {
-    color: #F6E54C !important;
+footer {
+    color: #F1E3CB;
 }
 
-.font-color_second {
-    color: #663ED6;
+.navlink-fc, .fcolor_dark, label, .beer_li, a.button:hover {
+    color: #581C0C !important;
+}
+
+.button_lt {
+    color: #581C0C;
+    background-color: #F1E3CB;
+}
+
+.button_lt:hover {
+    background-color: #d1c5b0;
+}
+
+.fcolor_medium, .beer_li_span {
+    color: #CA5116;
+}
+
+.fcolor_light {
+    color: #F9B384;
+}
+
+.fcolor_black {
+    color: #474744;
 }
 
 
 /* crispy forms styles */
 .help-block {
-    color: #663ED6;
+    color: #F9B384;
 }
 
 .controls>ul {
-    color: #663ED6;
+    color: #F9B384;
 }
