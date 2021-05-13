@@ -50,8 +50,8 @@ COLOR_TYPES = (
 class AddNewBeerReviewForm(forms.Form):
     beer_image = forms.URLField(
         max_length=2000, 
-        widget=forms.URLInput(attrs={'placeholder':'Enter URL containing beer image'}), 
-        required=True
+        widget=forms.URLInput(attrs={'placeholder':'Enter URL containing beer image (optional)'}), 
+        required=False
     )
     beer_name = forms.CharField(
         widget=forms.TextInput(attrs={'placeholder':'Enter beer name'}),
@@ -66,13 +66,13 @@ class AddNewBeerReviewForm(forms.Form):
     )
     comments = forms.CharField(
         max_length=500, 
-        widget=forms.TextInput(attrs={'placeholder':'Enter your comments'}),
+        widget=forms.TextInput(attrs={'placeholder':'Enter your comments (optional)'}),
         required=False
     )
 
 
 class UpdateBeerReviewForm(forms.Form):
-    beer_image = forms.URLField()
+    beer_image = forms.URLField(required=False)
     beer_name = forms.CharField()
     beer_type = forms.ModelChoiceField(queryset=BeerType.objects.all(), empty_label=None)
     beer_rating = forms.ChoiceField(choices=RATINGS)

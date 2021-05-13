@@ -43,7 +43,7 @@ class BeerReview(models.Model):
     Model representing a specific beer review of a specific user.
     """
     creator = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
-    image = models.URLField(max_length=2000, help_text='Enter URL for beer image')
+    image = models.URLField(max_length=2000, help_text='Enter URL for beer image', blank=True, default='')
     name = models.CharField(max_length=200, help_text='Enter beer name')
     beertype = models.ForeignKey(BeerType, on_delete=models.SET_NULL, null=True)
     # Foreign Key used because beer can only have one type, but types of beer can be attributable to multiple beers

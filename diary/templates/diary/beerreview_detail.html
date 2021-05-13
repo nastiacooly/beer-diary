@@ -10,7 +10,7 @@ active
     <h3 class="header fcolor_light">Your {{ beerreview.name }} review:</h3>
 
     <div class="review review_bgc">
-        <img src="{{ beerreview.image }}" class="beer-image">
+        <img src={% if beerreview.image %}"{{ beerreview.image }}" {% else %}"" {% endif %} class="beer-image" alt="beer image">
         <div class="review__descr">
             <h4 class="beer-name fcolor_dark fcolor_accent_dt">{{ beerreview.name }}</h4>
             <h5 class="beer-type fcolor_medium">{{ beerreview.beertype}}</h5>

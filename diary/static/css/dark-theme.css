@@ -3,7 +3,7 @@
     backdrop-filter: grayscale(1);
 }
 
-.beer-image {
+.beer-image, .main-icon {
     filter: contrast(0.9) grayscale(0.5);
 }
 

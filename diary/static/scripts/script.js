@@ -2,6 +2,16 @@ const btn = document.querySelector('#switch-dm_btn'),
     theme = document.querySelector("#theme-link"),
     currentTheme = localStorage.getItem('theme');
 
+// Adding default beer image to reviews
+
+const beerImage = document.querySelector('.beer-image');
+if (beerImage) {
+    if (beerImage.getAttribute('src') == '') {
+        beerImage.src = '/static/images/beer-default.jpg';
+    }
+}
+
+
 //Toggle Dark/Light Modes
 
 // Initiating localStorage data abouth current theme
@@ -46,22 +56,26 @@ if (currentTheme == "light") {
 
 // Filter-form - disabling certain inputs in order not to double filter request
 
-const filterForm = document.querySelector('#filter-form'),
-    beerTypeInput = filterForm.querySelector('#id_beer_type'),
-    beerTypeFilteredInput = filterForm.querySelector('#id_beer_type_filtered'),
-    beerTypeColorInput = filterForm.querySelector('#id_beer_type_color');
+const filterForm = document.querySelector('#filter-form');
 
-beerTypeInput.addEventListener('change', (e) => {
-    disableInputsOnChange(e.target, beerTypeFilteredInput, beerTypeColorInput);
-});
+if (filterForm) {
+    const beerTypeInput = filterForm.querySelector('#id_beer_type'),
+        beerTypeFilteredInput = filterForm.querySelector('#id_beer_type_filtered'),
+        beerTypeColorInput = filterForm.querySelector('#id_beer_type_color');
 
-beerTypeFilteredInput.addEventListener('change', (e) => {
-    disableInputsOnChange(e.target, beerTypeInput);
-});
+    beerTypeInput.addEventListener('change', (e) => {
+        disableInputsOnChange(e.target, beerTypeFilteredInput, beerTypeColorInput);
+    });
+    
+    beerTypeFilteredInput.addEventListener('change', (e) => {
+        disableInputsOnChange(e.target, beerTypeInput);
+    });
+    
+    beerTypeColorInput.addEventListener('change', (e) => {
+        disableInputsOnChange(e.target, beerTypeInput);
+    });
+}
 
-beerTypeColorInput.addEventListener('change', (e) => {
-    disableInputsOnChange(e.target, beerTypeInput);
-});
 
 // Function to disable 1 or 2 inputs if the third input is changed
 function disableInputsOnChange(changedInput, inputToDisable1, inputToDisable2) {
