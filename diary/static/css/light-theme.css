@@ -1,9 +1,9 @@
 .bg-image {
-    background: url("../images/bg.jpg") center/30% repeat;
+    background: url("../images/bg-4.jpg") center/20% repeat;
 }
 
 .container_bgc {
-    background-color: RGBA(88, 28, 12, .7);
+    background-color: RGBA(88, 28, 12, .8);
 }
 
 .review_bgc, form, .list_container {

@@ -10,7 +10,7 @@ active
 
     <h1 class="no-content fcolor_light">Here you can filter your diary reviews by beer type and rating:</h1>
 
-    <form action="{% url 'filter' %}" method="get">
+    <form action="{% url 'filter' %}" method="get" id="filter-form">
         <table>
         {{ form }}
         </table>

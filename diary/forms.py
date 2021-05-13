@@ -28,13 +28,23 @@ class NewUserForm(UserCreationForm):
         return user
 
 
-# Tuples for rating choices in forms
+# Tuples for choices in forms
 RATINGS = (
     ('1', 'very bad'),
     ('2', 'bad'),
     ('3', 'average'),
     ('4', 'good'),
     ('5', 'perfect')
+)
+
+FILTERED = (
+        ('y', 'filtered'),
+        ('n', 'unfiltered')
+    )
+
+COLOR_TYPES = (
+    ('d', 'dark'),
+    ('l', 'light')
 )
 
 class AddNewBeerReviewForm(forms.Form):
@@ -72,11 +82,16 @@ class SearchBeerForm(forms.Form):
     beer_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'Enter beer name to search'}), required=True)
 
 class FilterReviewsForm(forms.Form):
-    blank_choice = (('', 'Filter by rating'),) 
+    blank_choice_rating = (('', 'Filter by rating'),) 
+    blank_choice_filtered = (('', 'Filter by filtered/unfiltered beer type'),)
+    blank_choice_color = (('', 'Filter by beer type color'),)
 
     beer_type = forms.ModelChoiceField(
         queryset=BeerType.objects.all(), 
         empty_label='Filter by beer type',
         required=False
         )
-    beer_rating = forms.ChoiceField(choices=blank_choice + RATINGS, required=False)
+
+    beer_type_filtered = forms.ChoiceField(choices=blank_choice_filtered + FILTERED, required=False)
+    beer_type_color = forms.ChoiceField(choices=blank_choice_color + COLOR_TYPES, required=False)
+    beer_rating = forms.ChoiceField(choices=blank_choice_rating + RATINGS, required=False)

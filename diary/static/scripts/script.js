@@ -43,3 +43,41 @@ if (currentTheme == "light") {
     btn.innerHTML = 'Switch to Dark Mode';
 }
 
+
+// Filter-form - disabling certain inputs in order not to double filter request
+
+const filterForm = document.querySelector('#filter-form'),
+    beerTypeInput = filterForm.querySelector('#id_beer_type'),
+    beerTypeFilteredInput = filterForm.querySelector('#id_beer_type_filtered'),
+    beerTypeColorInput = filterForm.querySelector('#id_beer_type_color');
+
+beerTypeInput.addEventListener('change', (e) => {
+    disableInputsOnChange(e.target, beerTypeFilteredInput, beerTypeColorInput);
+});
+
+beerTypeFilteredInput.addEventListener('change', (e) => {
+    disableInputsOnChange(e.target, beerTypeInput);
+});
+
+beerTypeColorInput.addEventListener('change', (e) => {
+    disableInputsOnChange(e.target, beerTypeInput);
+});
+
+// Function to disable 1 or 2 inputs if the third input is changed
+function disableInputsOnChange(changedInput, inputToDisable1, inputToDisable2) {
+    if (inputToDisable2 == undefined) {
+        if (changedInput.selectedIndex > 0) {
+            inputToDisable1.disabled = 'True';
+        } else {
+            inputToDisable1.removeAttribute('disabled');
+        }
+    } else {
+        if (changedInput.selectedIndex > 0) {
+            inputToDisable1.disabled = 'True';
+            inputToDisable2.disabled = 'True';
+        } else {
+            inputToDisable1.removeAttribute('disabled');
+            inputToDisable2.removeAttribute('disabled');
+        }
+    }
+}

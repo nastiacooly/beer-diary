@@ -226,25 +226,30 @@ def beers_filter(request):
             "No filter match"
         )
     
-    form = FilterReviewsForm(initial={'beer_rating': '---'})
+    form = FilterReviewsForm()
     query_type = request.GET.get('beer_type')
     query_rating = request.GET.get('beer_rating')
+    query_filtered = request.GET.get('beer_type_filtered')
+    query_color = request.GET.get('beer_type_color')
 
-    if query_type and query_rating:
-        reviews = BeerReview.objects.filter(creator=request.user
-            ).filter(beertype__exact=query_type
-            ).filter(rating__exact=query_rating
-            ).order_by('name')
-        check_result()
-    elif query_type and not query_rating:
-        reviews = BeerReview.objects.filter(creator=request.user
-            ).filter(beertype__exact=query_type
-            ).order_by('name')
-        check_result()
-    elif query_rating and not query_type:
-        reviews = BeerReview.objects.filter(creator=request.user
-            ).filter(rating__exact=query_rating
-            ).order_by('name')
+    if query_type or query_rating or query_filtered or query_color:
+        reviews = BeerReview.objects.filter(creator=request.user).order_by('name')
+        if query_type:
+            reviews = reviews.filter(beertype__exact=query_type)
+        if query_rating:
+            reviews = reviews.filter(rating__exact=query_rating)
+        if query_filtered:
+            reviews = reviews.filter(beertype__filtered__exact=query_filtered)
+        if query_color:
+            reviews = reviews.filter(beertype__color__exact=query_color)
+        form = FilterReviewsForm(
+            initial={
+                'beer_type': query_type, 
+                'beer_rating': query_rating, 
+                'beer_type_filtered': query_filtered, 
+                'beer_type_color': query_color
+            }
+        )
         check_result()
 
     return render(

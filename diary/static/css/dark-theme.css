@@ -1,5 +1,5 @@
 .bg-image {
-    background: url("../images/bg.jpg") center/30% repeat;
+    background: url("../images/bg-4.jpg") center/20% repeat;
     backdrop-filter: grayscale(1);
 }
 
@@ -8,7 +8,7 @@
 }
 
 .container_bgc {
-    background-color: RGBA(65, 65, 65, .6);
+    background-color: RGBA(65, 65, 65, .7);
 }
 
 .button_dt, a.button_dt {
@@ -50,6 +50,10 @@
 
 .fcolor_black {
     color: RGBA(65, 65, 65, .6);
+}
+
+.alert {
+    filter: contrast(0.9) grayscale(0.5) !important;
 }
 
 
