@@ -3,7 +3,7 @@
     backdrop-filter: grayscale(1);
 }
 
-.beer-image, .main-icon {
+.beer-image, .main-icon, .welcome-img, .user-image {
     filter: contrast(0.9) grayscale(0.5);
 }
 
@@ -20,7 +20,7 @@
     background-color: RGBA(53, 53, 53, .87);
 }
 
-.review_bgc, .list_container, form {
+.review_bgc, .list_container, form, .profile_section_bgc {
     background-color: #EEE;
 }
 

@@ -45,7 +45,7 @@
                                 <li class="nav-item"><a class="nav-link navlink-fc {% block active-link-5 %}{% endblock %}" href="{% url 'filter' %}">Filter</a></li>
                             </ul>
                             <ul class="navbar-nav ml-auto mt-2">
-                                <li class="nav-item"><a class="nav-link navlink-fc" href="">{{ user.get_username }}</a></li>
+                                <li class="nav-item"><a class="nav-link navlink-fc {% block active-link-8 %}{% endblock %}" href="{% url 'profile' %}">{{ user.get_username }}</a></li>
                                 <li class="nav-item"><a class="nav-link navlink-fc" href="{% url 'logout'%}">Log Out</a></li>
                             </ul>
                         {% else %}
@@ -89,9 +89,11 @@
         </div>
 
         <footer class="footer">
-            A web-app by Anastasia Maryina (Github: <a href="https://github.com/nastiacooly" target="_blank">@nastiacooly</a>).<br>
-            Background and vector images designed by <a href="http://www.freepik.com">dgim-studio / Freepik</a>.<br>
-            App icon by <a target="_blank" href="http://icons8.ru">Icons8</a>.
+            Developed by Anastasia Maryina (Github: <a href="https://github.com/nastiacooly" target="_blank">@nastiacooly</a>).<br>
+            Graphics designed by 
+            <a href="http://www.freepik.com">dgim-studio / Freepik</a>,
+            <a href='https://pngtree.com/so/vector'>pngtree.com</a>,
+            <a target="_blank" href="http://icons8.ru">Icons8</a>.
         </footer>
 
         <!-- Bootstrap 4.5 scripts -->

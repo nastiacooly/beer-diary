@@ -1,19 +1,26 @@
 {% extends "base_generic.html" %}
 
+{% load static %}
+
 {% block title %}Home{% endblock %}
 
 {% block main %}
 
+    <p class="welcome fcolor_light">Welcome to Beer Diary!</p>
+
     {% if user.is_authenticated %}
 
-        <p class="welcome fcolor_light">Welcome to Beer Diary!</p>
         <p class="no-content fcolor_light">We are happy to see you today!</p>
 
     {% else %}
-        <p class="welcome fcolor_light">Welcome to Beer Diary!</p>
         <p class="no-content fcolor_light">Here you can take notes about and keep ratings of all the beer you ever tasted!</p>
         <p class="no-content fcolor_light">To create your own Beer Diary, please <a href="{% url 'register' %}">register</a> your account.</p>
         <p class="no-content fcolor_light">If you’re already a user of Beer Diary, please <a href="{% url 'login'%}">login</a>.</p>
+    {% endif %}
+
+    <img src="{% static 'images/welcome.png' %}" alt="welcome-beer" class="welcome-img">
+
+    {% if not user.is_authenticated %}
         <span class="visits fcolor_light">You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</span>
     {% endif %}
 

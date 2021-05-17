@@ -39,7 +39,7 @@ body {
     min-height: 100vh;
 }
 
-.reviews_container {
+.reviews_container, .profile_container {
     margin-top: 30px;
     width: 100%;
     display: flex;
@@ -159,7 +159,11 @@ input, select {
     font-weight: 700;
 }
 
-.review {
+.welcome-img {
+    height: 500px;
+}
+
+.review, .profile_section {
     display: flex;
     flex-wrap: wrap;
     padding: 20px;
@@ -169,26 +173,37 @@ input, select {
     margin-bottom: 30px;
 }
 
-.review__descr {
+.review__descr, .profile_info {
     min-width: 55%;
     display: flex;
     flex-direction: column;
     text-align: left;
 }
 
-.beer-image {
+.profile_info {
+    max-width: 55%;
+    margin-left: 5px;
+    text-align: right;
+}
+
+.profile_info_stats {
+    text-align: left;
+    margin-left: 15px;
+}
+
+.beer-image, .user-image {
     max-height: 100%;
     width: 40%;
     object-fit: contain;
 }
 
-.beer-name {
+.beer-name, .username, .profile_stats {
     font-style: normal;
     font-weight: 700;
     font-size: 1.8rem;
 }
 
-.beer-type {
+.beer-type, .user-email {
     font-style: normal;
     font-weight: 700;
     font-size: 1.25rem;
@@ -199,7 +214,7 @@ input, select {
     margin-bottom: 1.7rem;
 }
 
-.comments-header {
+.comments-header, .user-name {
     font-style: normal;
     font-weight: 700;
     font-size: 1.25rem;
@@ -207,18 +222,22 @@ input, select {
     margin-bottom: 0;
 }
 
-.comments {
+.comments, .reviews_count {
     font-style: normal;
     font-weight: 400;
     font-size: 1rem;
     color: #000000;
 }
 
-.date {
+.date, .user-regdate {
     text-align: right;
     font-style: italic;
     font-weight: 300;
     font-size: 0.8rem;
+}
+
+.user-regdate {
+    margin-top: 60px;
 }
 
 .update_links {

@@ -6,7 +6,7 @@
     background-color: RGBA(88, 28, 12, .8);
 }
 
-.review_bgc, form, .list_container {
+.review_bgc, form, .list_container, .profile_section_bgc {
     background-color: #FFF;
 }
 
