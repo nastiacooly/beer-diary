@@ -4,11 +4,13 @@ const btn = document.querySelector('#switch-dm_btn'),
 
 // Adding default beer image to reviews
 
-const beerImage = document.querySelector('.beer-image');
-if (beerImage) {
-    if (beerImage.getAttribute('src') == '') {
-        beerImage.src = '/static/images/beer-default.jpg';
-    }
+const beerImages = document.querySelectorAll('.beer-image');
+if (beerImages) {
+    beerImages.forEach((image) => {
+        if (image.getAttribute('src') == '') {
+            image.src = '/static/images/beer-default.jpg';
+        }
+    });
 }
 
 
