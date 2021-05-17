@@ -1,99 +1,101 @@
-const btn = document.querySelector('#switch-dm_btn'),
-    theme = document.querySelector("#theme-link"),
-    currentTheme = localStorage.getItem('theme');
+window.addEventListener('DOMContentLoaded', function() {
 
-// Adding default beer image to reviews
+    // Adding default beer image to reviews
 
-const beerImages = document.querySelectorAll('.beer-image');
-if (beerImages) {
-    beerImages.forEach((image) => {
-        if (image.getAttribute('src') == '') {
-            image.src = '/static/images/beer-default.jpg';
-        }
-    });
-}
+    const beerImages = document.querySelectorAll('.beer-image');
+    if (beerImages) {
+        beerImages.forEach((image) => {
+            if (image.getAttribute('src') == '') {
+                image.src = '/static/images/beer-default.jpg';
+            }
+        });
+    }
 
 
-//Toggle Dark/Light Modes
+    //Toggle Dark/Light Modes
 
-// Initiating localStorage data abouth current theme
-localStorage.setItem('theme', 'light');
+    const switchBtn = document.querySelector('#switch'),
+        theme = document.querySelector("#theme-link"),
+        currentTheme = localStorage.getItem('theme'),
+        modeIcon = document.querySelector('.mode-icon');
 
-// Listen for a click on the button
-btn.addEventListener("click", function() {
-    // If the current URL contains "ligh-theme.css"
-    if (theme.getAttribute("href") == "/static/css/light-theme.css") {
-        // ... then switch it to "dark-theme.css"
-        theme.href = "/static/css/dark-theme.css";
-        btn.classList.remove("btn-light");
-        btn.classList.add("btn-dark");
-        btn.innerHTML = 'Switch to Light Mode';
-        localStorage.setItem('theme', 'dark');
-    // Otherwise...
-    } else {
-        // ... switch it to "light-theme.css"
-        theme.href = "/static/css/light-theme.css";
-        btn.classList.add("btn-light");
-        btn.classList.remove("btn-dark");
-        btn.innerHTML = 'Switch to Dark Mode';
+    // Initiating localStorage data abouth current theme
+    if (!currentTheme) {
         localStorage.setItem('theme', 'light');
     }
-});
 
-// Choosing mode depending on localStorage data
-if (currentTheme == "dark") {
-    theme.href = "/static/css/dark-theme.css";
-    btn.classList.remove("btn-light");
-    btn.classList.add("btn-dark");
-    btn.innerHTML = 'Switch to Light Mode';
-}
-
-if (currentTheme == "light") {
-    theme.href = "/static/css/light-theme.css";
-    btn.classList.add("btn-light");
-    btn.classList.remove("btn-dark");
-    btn.innerHTML = 'Switch to Dark Mode';
-}
-
-
-// Filter-form - disabling certain inputs in order not to double filter request
-
-const filterForm = document.querySelector('#filter-form');
-
-if (filterForm) {
-    const beerTypeInput = filterForm.querySelector('#id_beer_type'),
-        beerTypeFilteredInput = filterForm.querySelector('#id_beer_type_filtered'),
-        beerTypeColorInput = filterForm.querySelector('#id_beer_type_color');
-
-    beerTypeInput.addEventListener('change', (e) => {
-        disableInputsOnChange(e.target, beerTypeFilteredInput, beerTypeColorInput);
-    });
-    
-    beerTypeFilteredInput.addEventListener('change', (e) => {
-        disableInputsOnChange(e.target, beerTypeInput);
-    });
-    
-    beerTypeColorInput.addEventListener('change', (e) => {
-        disableInputsOnChange(e.target, beerTypeInput);
-    });
-}
-
-
-// Function to disable 1 or 2 inputs if the third input is changed
-function disableInputsOnChange(changedInput, inputToDisable1, inputToDisable2) {
-    if (inputToDisable2 == undefined) {
-        if (changedInput.selectedIndex > 0) {
-            inputToDisable1.disabled = 'True';
+    // Listen for a click on the button
+    switchBtn.addEventListener('click', function() {
+        if (switchBtn.checked) {
+            theme.href = "/static/css/dark-theme.css";
+            localStorage.setItem('theme', 'dark');
+            modeIcon.src = "/static/icons/night.svg";
         } else {
-            inputToDisable1.removeAttribute('disabled');
+            theme.href = "/static/css/light-theme.css";
+            localStorage.setItem('theme', 'light');
+            modeIcon.src = "/static/icons/sun.svg";
         }
-    } else {
-        if (changedInput.selectedIndex > 0) {
-            inputToDisable1.disabled = 'True';
-            inputToDisable2.disabled = 'True';
+    });
+
+    //Setting theme according to localStorage preference
+    if (currentTheme == "dark") {
+        theme.href = "/static/css/dark-theme.css";
+        switchBtn.setAttribute('checked', 'true');
+        modeIcon.src = "/static/icons/night.svg";
+    }
+
+    if (currentTheme == "light") {
+        theme.href = "/static/css/light-theme.css";
+        switchBtn.removeAttribute('checked');
+        modeIcon.src = "/static/icons/sun.svg";
+    }
+
+
+    // Filter-form - disabling certain inputs in order not to double filter request
+
+    const filterForm = document.querySelector('#filter-form');
+
+    if (filterForm) {
+        const beerTypeInput = filterForm.querySelector('#id_beer_type'),
+            beerTypeFilteredInput = filterForm.querySelector('#id_beer_type_filtered'),
+            beerTypeColorInput = filterForm.querySelector('#id_beer_type_color');
+
+        beerTypeInput.addEventListener('change', (e) => {
+            disableInputsOnChange(e.target, beerTypeFilteredInput, beerTypeColorInput);
+        });
+        
+        beerTypeFilteredInput.addEventListener('change', (e) => {
+            disableInputsOnChange(e.target, beerTypeInput);
+        });
+        
+        beerTypeColorInput.addEventListener('change', (e) => {
+            disableInputsOnChange(e.target, beerTypeInput);
+        });
+    }
+
+
+    // Function to disable 1 or 2 inputs if the third input is changed
+    function disableInputsOnChange(changedInput, inputToDisable1, inputToDisable2) {
+        if (inputToDisable2 == undefined) {
+            if (changedInput.selectedIndex > 0) {
+                inputToDisable1.disabled = 'True';
+            } else {
+                inputToDisable1.removeAttribute('disabled');
+            }
         } else {
-            inputToDisable1.removeAttribute('disabled');
-            inputToDisable2.removeAttribute('disabled');
+            if (changedInput.selectedIndex > 0) {
+                inputToDisable1.disabled = 'True';
+                inputToDisable2.disabled = 'True';
+            } else {
+                inputToDisable1.removeAttribute('disabled');
+                inputToDisable2.removeAttribute('disabled');
+            }
         }
     }
-}
+
+});
+
+
+
+
+

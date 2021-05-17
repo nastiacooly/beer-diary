@@ -1,5 +1,7 @@
 {% extends "base_generic.html" %}
 
+{% load static %}
+
 {% block title %}Beer Review: {{ beerreview.name }}{% endblock %}
 
 {% block active-link-3 %}
@@ -31,8 +33,12 @@ active
             <p class="comments fcolor_black">{{ beerreview.comments }}</p>
             <span class="date fcolor_medium fcolor_accent_dt_light"> {{ beerreview.date }} </span>
             <div class="update_links">
-                    <a href="{% url 'update_beer_review' beerreview.id %}" class="link-update fcolor_dark fcolor_accent_dt">Update</a>
-                    <a href="{% url 'delete_beer_review' beerreview.id %}" class="link-update fcolor_dark fcolor_accent_dt">Delete</a>
+                    <a href="{% url 'update_beer_review' beerreview.id %}" class="link-update fcolor_dark fcolor_accent_dt">
+                        <img src="{% static 'icons/pencil.svg' %}" alt="change-review" class="link-update-icon">
+                    </a>
+                    <a href="{% url 'delete_beer_review' beerreview.id %}" class="link-update fcolor_dark fcolor_accent_dt">
+                        <img src="{% static 'icons/clear.svg' %}" alt="delete-review" class="link-update-icon">
+                    </a>
                 </div>
         </div>
     </div>
