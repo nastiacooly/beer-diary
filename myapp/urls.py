@@ -25,6 +25,7 @@ urlpatterns = [
 
 urlpatterns += [
     path('diary/', include('diary.urls')),
+    path('users/', include('users.urls')),
 ]
 
 from django.views.generic import RedirectView

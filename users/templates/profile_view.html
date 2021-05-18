@@ -1,0 +1,76 @@
+{% extends "base_generic.html" %}
+
+{% load static %}
+
+{% block title %}User's Profile{% endblock %}
+
+{% block active-link-8 %}
+active
+{% endblock %}
+
+{% block main %}
+
+    <h3 class="header fcolor_light">{{ u }}'s profile</h3>
+
+    
+    <div class="profile_container">
+
+        <!-- User account info -->
+        <div class="profile_section profile_section_bgc">
+            <img src="{% static 'images/user.png' %}" alt="profile picture" class="user-image">
+            <div class="profile_info">
+                <h4 class="username fcolor_dark fcolor_accent_dt">{{ u }}</h4>
+                <h5 class="user-email fcolor_medium">{{ u.email }}</h5>
+
+                <h6 class="user-name fcolor_black">{{ u.first_name }} {{ u.last_name }}</h6>
+                
+                <span class="user-regdate fcolor_medium fcolor_accent_dt_light">Joined Beer Diary since:<br> {{ u.date_joined }}</span>
+            </div>
+            <div class="friends-buttons">
+                {% if button_status == 'not_friend' %}
+                        <a href="/users/friend-request/send/{{ u.id }}" class="button button_lt button_dt">Add friend</a>
+                {% elif button_status == 'friend_request_sent' %}
+                        <a href="/users/friend-request/cancel/{{ u.id }}" class="button button_lt button_dt">Cancel request</a>
+                {% elif button_status == 'friend_request_received' %}
+                    <a href="/users/friend-request/accept/{{ u.id }}" class="button button_lt button_dt">Accept request</a>
+                    <a href="/users/friend-request/delete/{{ u.id }}" class="button button_lt button_dt">Reject request</a>
+                {% else %}
+                    <a href="/users/friend/delete/{{ u.id }}" class="button button_lt button_dt">Unfriend</a>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- User's friends section -->
+        <div class="profile_section profile_section_bgc">
+
+            {% if friends_list %}
+            
+            <div class="profile_friends">
+                <h4 class="profile_friends_header fcolor_dark fcolor_accent_dt">{{ u }}'s friends:</h4>
+
+                <p class="friends_count fcolor_black">Total friends: {{ u.profile.friends.count }}</p>
+            </div>
+
+            <div class="profile_friends">
+                <ul>
+                    {% for friend in friends_list %}
+                        <li>
+                            <a href="{{ friend.get_absolute_url }}" class="friend_li fcolor_dark fcolor_accent_dt">{{ friend }}</a> 
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            {% else %}
+            <div class="profile_friends">
+                <h4 class="profile_friends_header fcolor_dark fcolor_accent_dt">{{ u }}'s friends:</h4>
+                <p class="friends_count fcolor_black">{{u }} has no friends yet :(</p>
+            </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+{% endblock %}

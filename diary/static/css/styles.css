@@ -166,6 +166,7 @@ input, select {
 .review, .profile_section {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
     padding: 20px;
     width: 450px;
     height: 280px;
@@ -191,13 +192,23 @@ input, select {
     margin-left: 15px;
 }
 
+.profile_friends {
+    max-width: 50%;
+    margin-left: 30px;
+    text-align: left;
+}
+
+.friends-links {
+    margin-top: 5rem;
+}
+
 .beer-image, .user-image {
     max-height: 100%;
     width: 40%;
     object-fit: contain;
 }
 
-.beer-name, .username, .profile_stats {
+.beer-name, .username, .profile_stats, .profile_friends_header {
     font-style: normal;
     font-weight: 700;
     font-size: 1.8rem;
@@ -222,7 +233,7 @@ input, select {
     margin-bottom: 0;
 }
 
-.comments, .reviews_count {
+.comments, .reviews_count, .friends_count {
     font-style: normal;
     font-weight: 400;
     font-size: 1rem;

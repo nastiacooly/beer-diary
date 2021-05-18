@@ -3,10 +3,9 @@ from django.forms import ModelChoiceField
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
-from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
 
-from .models import BeerReview, BeerType
+from .models import BeerType
 
 # Customization of pre-built register form
 class NewUserForm(UserCreationForm):

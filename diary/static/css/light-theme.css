@@ -18,7 +18,7 @@ footer {
     color: #F1E3CB;
 }
 
-.navlink-fc, .fcolor_dark, label, .beer_li, a.button:hover {
+.navlink-fc, .fcolor_dark, label, .beer_li, a.button:hover, .user_li {
     color: #581C0C !important;
 }
 

@@ -1,0 +1,35 @@
+{% extends "base_generic.html" %}
+
+{% block title %}Users{% endblock %}
+
+{% block active-link-8 %}
+active
+{% endblock %}
+
+{% block main %}
+    <h3 class="header fcolor_light">These users could become your friends:</h3>
+
+    <div class="list_container">
+
+        {% if users %}
+
+            <ul>
+                {% for user in users %}
+                <li>
+                    <a href="{{ user.get_absolute_url }}" class="user_li fcolor_dark fcolor_accent_dt">{{ user }}</a> 
+                    {% if not user.user in sent %}
+                        <a href="/users/friend-request/send/{{ user.user_id }}" class="button button_lt button_dt">Add friend</a>
+                    {% else %}
+                        <a href="/users/friend-request/cancel/{{ user.user_id }}" class="button button_lt button_dt">Cancel request</a>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="no-content fcolor_light">No new friends to add. Please check later!</p>
+        
+        {% endif %} 
+
+    </div>
+
+{% endblock %}
