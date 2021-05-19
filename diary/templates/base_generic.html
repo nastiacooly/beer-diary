@@ -36,7 +36,7 @@
                 </button>
                 {% block navbar-links %}
                     <div class="collapse navbar-collapse" id="navbar">
-                        {% if user.is_authenticated %}
+                        {% if request.user.is_authenticated %}
                             <ul class="navbar-nav mr-auto">
                                 <li class="nav-item"><a class="nav-link navlink-fc {% block active-link-1 %}{% endblock %}" aria-current="page" href="{% url 'my-perfect-beers' %}">My Favourites</a></li>
                                 <li class="nav-item"><a class="nav-link navlink-fc {% block active-link-2 %}{% endblock %}" href="{% url 'add_new_beer_review' %}">Add Review</a></li>
@@ -45,7 +45,7 @@
                                 <li class="nav-item"><a class="nav-link navlink-fc {% block active-link-5 %}{% endblock %}" href="{% url 'filter' %}">Filter</a></li>
                             </ul>
                             <ul class="navbar-nav ml-auto mt-2">
-                                <li class="nav-item"><a class="nav-link navlink-fc {% block active-link-8 %}{% endblock %}" href="{% url 'profile' %}">{{ user.get_username }}</a></li>
+                                <li class="nav-item"><a class="nav-link navlink-fc {% block active-link-8 %}{% endblock %}" href="{% url 'profile' %}">{{ request.user.get_username }}</a></li>
                                 <li class="nav-item"><a class="nav-link navlink-fc" href="{% url 'logout'%}">Log Out</a></li>
                             </ul>
                         {% else %}
@@ -67,16 +67,16 @@
 
             {% block pagination %}
                 {% if is_paginated %}
-                    <div class="pagination">
+                    <div class="pagination mb-5">
                         <span class="page-links">
                             {% if page_obj.has_previous %}
-                                <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+                                <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}" class="button button_lt button_dt">previous</a>
                             {% endif %}
-                            <span class="page-current">
-                                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                            <span class="page-current ml-2 mr-2">
+                                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
                             </span>
                             {% if page_obj.has_next %}
-                                <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
+                                <a href="{{ request.path }}?page={{ page_obj.next_page_number }}" class="button button_lt button_dt">next</a>
                             {% endif %}
                         </span>
                     </div>

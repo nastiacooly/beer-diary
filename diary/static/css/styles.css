@@ -1,6 +1,3 @@
-/* add media rules for adaptive design later */
-
-
 /* Roboto font import from Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300&display=swap');
 
@@ -174,6 +171,10 @@ input, select {
     margin-bottom: 30px;
 }
 
+.profile_section_big {
+    height: 400px;
+}
+
 .review__descr, .profile_info {
     min-width: 55%;
     display: flex;
@@ -193,13 +194,15 @@ input, select {
 }
 
 .profile_friends {
-    max-width: 50%;
-    margin-left: 30px;
     text-align: left;
 }
 
 .friends-links {
-    margin-top: 5rem;
+    padding: 0 20px;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .beer-image, .user-image {
@@ -359,4 +362,18 @@ input:checked + .slider:before {
 
 .slider.round:before {
     border-radius: 50%;
+}
+
+
+/* add media rules for adaptive design later */
+@media (max-width: 992px) {
+
+    .nav-link:hover {
+        transform: none !important;
+    }
+
+    .link-update-icon:hover {
+        transform: none;
+    }
+
 }

@@ -129,8 +129,8 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Redirect to home URL after login (Default redirects to /accounts/profile/)
-LOGIN_REDIRECT_URL = '/'
+# Redirect to home URL after logout (Default redirects to /accounts/profile/)
+LOGOUT_REDIRECT_URL = 'index'
 
 # Для сброса пароля (пока не работает отправка писем на почту)
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

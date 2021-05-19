@@ -4,10 +4,6 @@
 
 {% block title %}User's Profile{% endblock %}
 
-{% block active-link-8 %}
-active
-{% endblock %}
-
 {% block main %}
 
     <h3 class="header fcolor_light">{{ u }}'s profile</h3>
@@ -40,6 +36,22 @@ active
             </div>
         </div>
 
+        <!-- User statistics -->
+        <div class="profile_section profile_section_bgc">
+            
+            <div class="profile_info profile_info_stats">
+                <h4 class="profile_stats fcolor_dark fcolor_accent_dt">{{ u }}'s statistics:</h4>
+
+                <p class="reviews_count fcolor_black">Total reviews: {{ reviews }}</p>
+                <p class="reviews_count fcolor_black">Dark beer reviews: {{ dark_reviews }}</p>
+                <p class="reviews_count fcolor_black">Light beer reviews: {{ light_reviews }}</p>
+
+                <a href="/users/{{ u.id }}/beers" class="button button_lt button_dt">See {{ u }}'s reviews</a>
+            </div>
+
+            <img src="{% static 'images/beer-default.jpg' %}" alt="beer image" class="beer-image">
+        </div>
+
         <!-- User's friends section -->
         <div class="profile_section profile_section_bgc">
 
@@ -48,17 +60,15 @@ active
             <div class="profile_friends">
                 <h4 class="profile_friends_header fcolor_dark fcolor_accent_dt">{{ u }}'s friends:</h4>
 
-                <p class="friends_count fcolor_black">Total friends: {{ u.profile.friends.count }}</p>
-            </div>
-
-            <div class="profile_friends">
-                <ul>
+                <ul class="friends-list">
                     {% for friend in friends_list %}
                         <li>
                             <a href="{{ friend.get_absolute_url }}" class="friend_li fcolor_dark fcolor_accent_dt">{{ friend }}</a> 
                         </li>
                     {% endfor %}
                 </ul>
+
+                <p class="friends_count fcolor_black">Total friends: {{ u.profile.friends.count }}</p>
             </div>
 
             {% else %}

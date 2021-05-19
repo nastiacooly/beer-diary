@@ -257,34 +257,3 @@ def beers_filter(request):
         'diary/filter.html',
         context={'form': form, 'reviews': reviews},
     )
-
-@login_required
-def profile_view(request):
-    """
-    Функция отображения профиля пользователя
-    """
-    user_info = User.objects.get(username=request.user)
-
-    user_reviews_count = BeerReview.objects.filter(creator=request.user).count()
-    user_dark_reviews_count = BeerReview.objects.filter(
-        creator=request.user
-        ).filter(
-        beertype__color__exact='d'
-        ).count()
-    user_light_reviews_count = BeerReview.objects.filter(
-        creator=request.user
-        ).filter(
-        beertype__color__exact='l'
-        ).count()
-
-
-    return render(
-        request,
-        'profile.html',
-        context={
-            'user_info': user_info,
-            'reviews': user_reviews_count,
-            'dark_reviews': user_dark_reviews_count,
-            'light_reviews': user_light_reviews_count,
-        },
-    )

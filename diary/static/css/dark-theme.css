@@ -28,7 +28,7 @@
     background-color: #525252;
 }
 
-.footer {
+.footer, .page-current {
     color: #EEE;
 }
 

@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.contrib.auth import login
+from django.views import generic
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 
 from .models import User, Profile, FriendRequest
-from .models import BeerReview
+from diary.models import BeerReview
 from .forms import NewUserForm
 
 from django.contrib.auth import get_user_model
@@ -82,11 +84,13 @@ def profile_view(request):
 @login_required
 def users_list(request):
     """
-    Функция отображения списка пользователей
+    Функция отображения списка пользователей (друзья друзей + рандом)
     """
     users = Profile.objects.exclude(user=request.user)
     sent_friend_requests = FriendRequest.objects.filter(from_user=request.user)
+    rec_friend_requests = FriendRequest.objects.filter(to_user=request.user)
     sent_to = []
+    received = []
     friends = []
 
     for user in users:
@@ -119,28 +123,16 @@ def users_list(request):
     for se in sent_friend_requests:
         sent_to.append(se.to_user)
 
+    for rec in rec_friend_requests:
+        received.append(rec.from_user)
+
     return render(
         request, 
         "users_list.html", 
         context = {
         'users': friends,
-        'sent': sent_to
-        }
-    )
-
-@login_required
-def friend_list(request):
-    """
-    Функция отображения списка друзей
-    """
-    p = request.user.profile
-    friends = p.friends.all()
-
-    return render(
-        request, 
-        "users/friend_list.html", 
-        context={
-        'friends': friends
+        'sent': sent_to,
+        'received': received
         }
     )
 
@@ -233,6 +225,19 @@ def anyuser_profile_view(request, slug):
             from_user=p.user).filter(to_user=request.user)) == 1:
                 button_status = 'friend_request_received'
 
+    # for beer reviews statistics
+    u_reviews_count = BeerReview.objects.filter(creator=u).count()
+    u_dark_reviews_count = BeerReview.objects.filter(
+        creator=u
+        ).filter(
+        beertype__color__exact='d'
+        ).count()
+    u_light_reviews_count = BeerReview.objects.filter(
+        creator=u
+        ).filter(
+        beertype__color__exact='l'
+        ).count()
+
     return render(
         request, 
         "profile_view.html", 
@@ -240,6 +245,9 @@ def anyuser_profile_view(request, slug):
             'u': u,
             'button_status': button_status,
             'friends_list': friends,
+            'reviews': u_reviews_count,
+            'dark_reviews': u_dark_reviews_count,
+            'light_reviews': u_light_reviews_count
         }
     )
 
@@ -262,3 +270,30 @@ def search_users(request):
             'users': object_list
         }
     )
+
+# Класс для отображения обзоров другого пользователя/друга
+class BeerReviewsByOtherUserListView(LoginRequiredMixin, generic.ListView):
+    model = BeerReview
+    context_object_name = 'beer_reviews_user_list'
+    template_name ='user_beerreviews.html'
+    paginate_by = 4
+    def get_queryset(self):
+        return BeerReview.objects.filter(creator__id=self.kwargs['id']).order_by('name')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Other user
+        user = User.objects.get(id=self.kwargs['id'])
+        context['user'] = user.username
+
+        # Logged in user and his friends
+        p = self.request.user.profile
+        friends = p.friends.all().values_list('slug', flat=True)
+        
+        # Set friends status if other user is a friend of a logged in user
+        status = ""
+        if user.username in friends:
+            status = 'friends'
+
+        context['status'] = status
+        return context

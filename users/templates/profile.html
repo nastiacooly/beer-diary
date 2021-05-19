@@ -43,24 +43,22 @@ active
         </div>
 
         <!-- User's friends section -->
-        <div class="profile_section profile_section_bgc">
+        <div class="profile_section profile_section_bgc profile_section_big">
 
             {% if friends_list %}
             
             <div class="profile_friends">
                 <h4 class="profile_friends_header fcolor_dark fcolor_accent_dt">Friends:</h4>
 
-                <p class="friends_count fcolor_black">Total friends: {{ friends_list.count }}</p>
-            </div>
-
-            <div class="profile_friends">
-                <ul>
+                <ul class="friends-list">
                     {% for friend in friends_list %}
                         <li>
                             <a href="{{ friend.get_absolute_url }}" class="friend_li fcolor_dark fcolor_accent_dt">{{ friend }}</a> 
                         </li>
                     {% endfor %}
                 </ul>
+
+                <p class="friends_count fcolor_black">Total friends: {{ friends_list.count }}</p>
             </div>
 
             {% else %}
@@ -74,9 +72,12 @@ active
                 <h4 class="profile_friends_header fcolor_dark fcolor_accent_dt">Requests:</h4>
                 <p class="friends_count fcolor_black">Sent friend requests: {{ sent_friend_requests.count }}</p>
                 <p class="friends_count fcolor_black">Received friend requests: {{ rec_friend_requests.count }}</p>
+            </div>
+
+            <div class="profile_friends">
                 <div class="friends-links">
-                    <a href="{% url 'users_list' %}" class="user_li">Recommended friends</a>
-                    <a href="{% url 'search_users' %}" class="user_li">Search Users</a>
+                    <a href="{% url 'users_list' %}" class="button button_lt button_dt mr-5">My requests and recommended friends</a>
+                    <a href="{% url 'search_users' %}" class="button button_lt button_dt">Search users</a>
                 </div>
             </div>
 

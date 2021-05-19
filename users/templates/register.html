@@ -10,6 +10,13 @@ active
 
 {% load crispy_forms_tags %}
 
+    {% if request.user.is_authenticated %}
+
+    <p class='no-content fcolor_light'>This is a registration page.</p>
+    <p class='no-content fcolor_light'>You don't see it because you've already logged in.</p>
+
+    {% else %}
+
     <p class='no-content fcolor_light'>Register</p>
     <p class="no-content fcolor_light">If you’re already a user of Beer Diary, please <a href="{% url 'login'%}">login</a> instead.</p>
     <form action="" method="POST">
@@ -17,5 +24,7 @@ active
         {{ register_form|crispy }}
         <button class="button button_lt button_dt" type="submit">Register</button>
     </form>
+
+    {% endif %}
 
 {% endblock %}
