@@ -16,11 +16,10 @@
             <img src="{% static 'images/user.png' %}" alt="profile picture" class="user-image">
             <div class="profile_info">
                 <h4 class="username fcolor_dark fcolor_accent_dt">{{ u }}</h4>
-                <h5 class="user-email fcolor_medium">{{ u.email }}</h5>
 
-                <h6 class="user-name fcolor_black">{{ u.first_name }} {{ u.last_name }}</h6>
+                <h6 class="user-name fcolor_black">{{ u.first_name }}</h6>
                 
-                <span class="user-regdate fcolor_medium fcolor_accent_dt_light">Joined Beer Diary since:<br> {{ u.date_joined }}</span>
+                <span class="user-regdate fcolor_medium fcolor_accent_dt_light">Joined Beer Diary since:<br> {{ u.date_joined | date:"F d, Y" }}</span>
             </div>
             <div class="friends-buttons">
                 {% if button_status == 'not_friend' %}

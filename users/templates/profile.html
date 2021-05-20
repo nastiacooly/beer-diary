@@ -24,7 +24,7 @@ active
 
                 <h6 class="user-name fcolor_black">{{ user_info.first_name }} {{ user_info.last_name }}</h6>
                 
-                <span class="user-regdate fcolor_medium fcolor_accent_dt_light">Joined Beer Diary since:<br> {{ user_info.date_joined }}</span>
+                <span class="user-regdate fcolor_medium fcolor_accent_dt_light">Joined Beer Diary since:<br> {{ user_info.date_joined | date:"F d, Y" }}</span>
             </div>
         </div>
 
@@ -76,8 +76,8 @@ active
 
             <div class="profile_friends">
                 <div class="friends-links">
-                    <a href="{% url 'users_list' %}" class="button button_lt button_dt mr-5">My requests and recommended friends</a>
-                    <a href="{% url 'search_users' %}" class="button button_lt button_dt">Search users</a>
+                    <a href="{% url 'search_users' %}" class="button button_lt button_dt mr-5">Search users</a>
+                    <a href="{% url 'users_list' %}" class="button button_lt button_dt">My requests and recommended friends</a>
                 </div>
             </div>
 
