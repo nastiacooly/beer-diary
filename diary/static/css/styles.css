@@ -366,7 +366,17 @@ input:checked + .slider:before {
 }
 
 
-/* add media rules for adaptive design later */
+/* media rules */
+@media (max-width: 1320px) {
+
+
+}
+
+@media (max-width: 1200px) {
+
+
+}
+
 @media (max-width: 992px) {
 
     .nav-link:hover {
@@ -378,3 +388,14 @@ input:checked + .slider:before {
     }
 
 }
+
+@media (max-width: 768px) {
+
+
+}
+
+@media (max-width: 576px) {
+
+
+}
+
