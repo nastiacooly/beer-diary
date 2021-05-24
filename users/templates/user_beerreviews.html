@@ -8,7 +8,7 @@
 
     {% if status == "friends" %}
 
-        <h3 class="header fcolor_light">{{ user }}'s beer reviews:</h3>
+        <h3 class="header fcolor_light">{{ user }}'s beer memories:</h3>
 
         <div class="reviews_container">
         
@@ -47,14 +47,14 @@
                 {% endfor %}
             
             {% else %}
-                <p class="no-content fcolor_light">There are no beer reviews in {{ user }}'s diary yet.</p>
+                <p class="no-content fcolor_light">There are no memories in {{ user }}'s Beer Diary yet.</p>
             {% endif %}
 
         </div>     
 
     {% else %}
 
-        <p class="no-content fcolor_light">Sorry, you can see reviews submitted by your friends only.</p>
+        <p class="no-content fcolor_light">Sorry, you can see Beer Diary memories submitted by your friends only.</p>
         <p class="no-content fcolor_light">{{ user }} is not in your friends list.</p>
 
     {% endif %}     

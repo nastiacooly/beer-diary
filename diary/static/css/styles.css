@@ -5,7 +5,7 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif !important;
     font-weight: 300;
     font-style: normal;
 }
@@ -25,7 +25,6 @@ a.button:hover {
 
 body {
     position: relative;
-    min-height: 80vh;
 }
 
 .container {
@@ -33,7 +32,7 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    min-height: 100vh;
+    min-height: calc(100vh - 92px);
 }
 
 .reviews_container, .profile_container {
@@ -52,12 +51,14 @@ body {
 
 form {
     margin-top: 15px;
+    margin-bottom: 15px;
     width: 60%;
     border-radius: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 15px;
+    padding: 30px;
+    text-align: left;
 }
 
 .delete-form {
@@ -84,6 +85,25 @@ label, .beer_li {
 input, select {
     width: 80%;
     height: 2rem;
+    text-align: left;
+    padding: 2px;
+}
+
+input::placeholder {
+    text-align: left;
+}
+
+input[name=q]::placeholder {
+    text-align: center;
+}
+
+textarea {
+    min-height: 9rem;
+    border-radius: 0;
+    padding: 2px;
+}
+
+.form_tac, .form_tac input {
     text-align: center;
 }
 
@@ -91,11 +111,6 @@ input, select {
     font-style: italic;
     font-weight: 300;
     font-size: 0.5rem;
-}
-
-#id_comments {
-    height: 9rem;
-    border-radius: 0;
 }
 
 .button {
@@ -148,7 +163,7 @@ input, select {
 
 .no-content {
     font-size: 1.7rem;
-    font-weight: 700;
+    font-weight: 400;
 }
 
 .welcome {
@@ -172,7 +187,7 @@ input, select {
 }
 
 .profile_section_big {
-    height: 400px;
+    height: auto;
 }
 
 .review__descr, .profile_info {
@@ -195,6 +210,8 @@ input, select {
 
 .profile_friends {
     text-align: left;
+    min-width: 40%;
+    min-height: 30%;
 }
 
 .friends-links {
@@ -286,13 +303,13 @@ ul {
     width: 80vw;
 }
 
-.visits {
-    margin-top: 50px;
-}
-
 /* crispy forms styles */
 .help-block {
     font-size: 0.8rem;
+}
+
+.control-group {
+    width: 80%;
 }
 
 .controls>ul {

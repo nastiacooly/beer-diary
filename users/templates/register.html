@@ -12,14 +12,23 @@ active
 
     {% if request.user.is_authenticated %}
 
-    <p class='no-content fcolor_light'>This is a registration page.</p>
-    <p class='no-content fcolor_light'>You don't see it because you've already logged in.</p>
+    <div class="container-fluid p-0">
+                <div class="alert alert-warning alert-dismissible" role="alert" >
+                    <strong>This is a registration page.</strong>
+                    You don't see it because you're already logged in.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+    </div>
+
+    <a href="{% url 'index' %}">Return to main page</a>
 
     {% else %}
 
-    <p class='no-content fcolor_light'>Register</p>
+    <p class='welcome fcolor_light'>Register</p>
     <p class="no-content fcolor_light">If you’re already a user of Beer Diary, please <a href="{% url 'login'%}">login</a> instead.</p>
-    <form action="" method="POST">
+    <form class="form_tac" action="" method="POST">
         {% csrf_token %}
         {{ register_form|crispy }}
         <button class="button button_lt button_dt" type="submit">Register</button>

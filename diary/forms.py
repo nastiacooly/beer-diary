@@ -65,7 +65,7 @@ class AddNewBeerReviewForm(forms.Form):
     )
     comments = forms.CharField(
         max_length=500, 
-        widget=forms.TextInput(attrs={'placeholder':'Enter your comments (optional)'}),
+        widget=forms.Textarea(attrs={'placeholder':'Enter your comments (optional)'}),
         required=False
     )
 
@@ -75,7 +75,7 @@ class UpdateBeerReviewForm(forms.Form):
     beer_name = forms.CharField()
     beer_type = forms.ModelChoiceField(queryset=BeerType.objects.all(), empty_label=None)
     beer_rating = forms.ChoiceField(choices=RATINGS)
-    comments = forms.CharField(max_length=500, required=False)
+    comments = forms.CharField(widget=forms.Textarea, max_length=500, required=False)
 
 class SearchBeerForm(forms.Form):
     beer_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'Enter beer name to search'}), required=True)
