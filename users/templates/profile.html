@@ -35,8 +35,8 @@ active
                 <h4 class="profile_stats fcolor_dark fcolor_accent_dt">Your Statistics:</h4>
 
                 <p class="reviews_count fcolor_black">Total memories: {{ reviews }}</p>
-                <p class="reviews_count fcolor_black">Dark beer memories: {{ dark_reviews }}</p>
-                <p class="reviews_count fcolor_black">Light beer memories: {{ light_reviews }}</p>
+                <p class="reviews_count fcolor_black">Dark beer: {{ dark_reviews }}</p>
+                <p class="reviews_count fcolor_black">Light beer: {{ light_reviews }}</p>
             </div>
 
             <img src="{% static 'images/beer-default.jpg' %}" alt="beer image" class="beer-image">
@@ -76,7 +76,7 @@ active
 
             <div class="profile_friends">
                 <div class="friends-links">
-                    <a href="{% url 'search_users' %}" class="button button_lt button_dt mr-5">Search users</a>
+                    <a href="{% url 'search_users' %}" class="mr-5 button button_lt button_dt">Search users</a>
                     <a href="{% url 'users_list' %}" class="button button_lt button_dt">My requests and recommended friends</a>
                 </div>
             </div>

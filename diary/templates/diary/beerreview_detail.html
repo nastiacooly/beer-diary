@@ -11,36 +11,44 @@ active
 {% block main %}
     <h3 class="header fcolor_light">Your {{ beerreview.name }} review:</h3>
 
-    <div class="review review_bgc">
-        <img src={% if beerreview.image %}"{{ beerreview.image }}" {% else %}"" {% endif %} class="beer-image" alt="beer image">
-        <div class="review__descr">
-            <h4 class="beer-name fcolor_dark fcolor_accent_dt">{{ beerreview.name }}</h4>
-            <h5 class="beer-type fcolor_medium">{{ beerreview.beertype}}</h5>
-            {% if beerreview.rating == '1' %}
-                <p class="rating fcolor_black">&#10026;</p>
-            {% elif beerreview.rating == '2' %}
-                <p class="rating fcolor_black">&#10026; &#10026;</p>
-            {% elif beerreview.rating == '3' %}
-                <p class="rating fcolor_black">&#10026; &#10026; &#10026;</p>
-            {% elif beerreview.rating == '4' %}
-                <p class="rating fcolor_black">&#10026; &#10026; &#10026; &#10026;</p>
-            {% elif beerreview.rating == '5' %}
-                <p class="rating fcolor_black">&#10026; &#10026; &#10026; &#10026; &#10026;</p>
-            {% else %}
-                <p class="rating fcolor_black">No rating</p>
-            {% endif %}
-            <h6 class="comments-header fcolor_black">Comments:</h6>
-            <p class="comments fcolor_black">{{ beerreview.comments }}</p>
-            <span class="date fcolor_medium fcolor_accent_dt_light"> {{ beerreview.date }} </span>
-            <div class="update_links">
-                    <a href="{% url 'update_beer_review' beerreview.id %}" class="link-update fcolor_dark fcolor_accent_dt">
-                        <img src="{% static 'icons/pencil.svg' %}" alt="change-review" class="link-update-icon">
-                    </a>
-                    <a href="{% url 'delete_beer_review' beerreview.id %}" class="link-update fcolor_dark fcolor_accent_dt">
-                        <img src="{% static 'icons/clear.svg' %}" alt="delete-review" class="link-update-icon">
-                    </a>
-                </div>
+    <div class="reviews_container">
+
+        <div class="review review_bgc">
+            <img src={% if beerreview.image %}"{{ beerreview.image }}" {% else %}"" {% endif %} class="beer-image" alt="beer image">
+            <div class="review__descr">
+                <h4 class="beer-name fcolor_dark fcolor_accent_dt">{{ beerreview.name }}</h4>
+                <h5 class="beer-type fcolor_medium">{{ beerreview.beertype}}</h5>
+                {% if beerreview.rating == '1' %}
+                    <p class="rating fcolor_black">&#10026;</p>
+                {% elif beerreview.rating == '2' %}
+                    <p class="rating fcolor_black">&#10026; &#10026;</p>
+                {% elif beerreview.rating == '3' %}
+                    <p class="rating fcolor_black">&#10026; &#10026; &#10026;</p>
+                {% elif beerreview.rating == '4' %}
+                    <p class="rating fcolor_black">&#10026; &#10026; &#10026; &#10026;</p>
+                {% elif beerreview.rating == '5' %}
+                    <p class="rating fcolor_black">&#10026; &#10026; &#10026; &#10026; &#10026;</p>
+                {% else %}
+                    <p class="rating fcolor_black">No rating</p>
+                {% endif %}
+                {% if beer.comments %}
+                        <h6 class="comments-header fcolor_black">Comments:</h6>
+                        <p class="comments fcolor_black">{{ beerreview.comments }}</p>
+                {% else %}
+                        <p class="comments fcolor_black">No comments</p>
+                {% endif %}
+                <span class="date fcolor_medium fcolor_accent_dt_light"> {{ beerreview.date }} </span>
+                <div class="update_links">
+                        <a href="{% url 'update_beer_review' beerreview.id %}" class="link-update fcolor_dark fcolor_accent_dt">
+                            <img src="{% static 'icons/pencil.svg' %}" alt="change-review" class="link-update-icon">
+                        </a>
+                        <a href="{% url 'delete_beer_review' beerreview.id %}" class="link-update fcolor_dark fcolor_accent_dt">
+                            <img src="{% static 'icons/clear.svg' %}" alt="delete-review" class="link-update-icon">
+                        </a>
+                    </div>
+            </div>
         </div>
+
     </div>
 
 {% endblock %}

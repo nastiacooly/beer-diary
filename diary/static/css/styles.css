@@ -27,6 +27,10 @@ body {
     position: relative;
 }
 
+.bg-image {
+    background: url("../images/bg-4.jpg") center/20% repeat fixed;
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -316,11 +320,15 @@ ul {
     font-size: 0.8rem;
 }
 
-/* animated switch button */
+/* animated switch dark mode button */
 .switch-dm {
     position: fixed;
     bottom: 10px;
     right: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .switch {
@@ -328,6 +336,7 @@ ul {
     display: inline-block;
     width: 60px;
     height: 34px;
+    margin-bottom: 0 !important;
 }
 
 .switch input {
@@ -384,16 +393,6 @@ input:checked + .slider:before {
 
 
 /* media rules */
-@media (max-width: 1320px) {
-
-
-}
-
-@media (max-width: 1200px) {
-
-
-}
-
 @media (max-width: 992px) {
 
     .nav-link:hover {
@@ -404,15 +403,288 @@ input:checked + .slider:before {
         transform: none;
     }
 
+    form {
+        width: 90%;
+    }
+
+    textarea {
+        width: 80%;
+    }
+
+    .welcome {
+        font-size: 2.5rem;
+    }
+
+    .welcome-img {
+        height: 400px;
+    }
+
+    .no-content {
+        font-size: 1.5rem;
+    }
+
+    .mode-icon {
+        width: 28px;
+    }
+
+    .switch {
+        width: 48px;
+        height: 26px;
+    }
+
+    .slider:before {
+        height: 18px;
+        width: 18px;
+        left: 4px;
+        bottom: 4px;
+    }
+
+    .slider.round {
+        border-radius: 26px;
+    }
+
+    input:checked + .slider:before {
+        -webkit-transform: translateX(22px);
+        -ms-transform: translateX(22px);
+        transform: translateX(22px);
+    }
 }
 
 @media (max-width: 768px) {
 
+    table {
+        width: 100%;
+    }
+
+    td {
+        max-width: 150px;
+    }
+
+    form {
+        width: 100%;
+    }
+
+    .footer {
+        width: 60vw;
+        font-size: 0.8rem;
+    }
 
 }
 
 @media (max-width: 576px) {
 
+    .nav-link {
+        font-size: 1rem;
+    }
+
+    .navbar-brand {
+        font-size: 1.5rem !important;
+    }
+
+    .main-icon {
+        height: 50px;
+    }
+
+    .container {
+        min-height: calc(100vh - 66px);
+    }
+
+    .welcome {
+        font-size: 1.5rem;
+    }
+
+    .welcome-img {
+        height: 300px;
+    }
+
+    .header {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+    }
+
+    .no-content {
+        font-size: 1rem;
+    }
+
+    .reviews_container, .profile_container {
+        margin-top: 15px;
+    }
+
+    .profile_container {
+        width: 90%;
+    }
+
+    .review, .profile_section {
+        padding: 10px;
+        width: 430px;
+        height: 210px;
+        border-radius: 50px;
+        margin-bottom: 20px;
+    }
+
+    .profile_section {
+        padding: 20px 10px;
+    }
+
+    .profile_section_big {
+        padding: 30px 30px;
+        height: auto;
+        flex-direction: column;
+    }
+
+    .profile_friends {
+        min-width: 10%;
+        min-height: 10%;
+    }
+
+    .profile_stats, .profile_friends_header {
+        font-size: 0.9rem;
+    }
+
+    .profile_info {
+        padding-right: 20px;
+    }
+
+    .profile_info_stats {
+        padding-right: 0;
+    }
+
+    .friends-list {
+        font-size: 0.8rem;
+    }
+
+    .friends-links {
+        margin-top: 0.5rem;
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+    }
+
+    .friends-links>.button {
+        margin-bottom: 5px;
+    }
+
+    .beer-name, .username {
+        font-size: 1.3rem;
+    }
+
+    .beer-type, .user-email {
+        font-size: 1rem;
+    }
+
+    .rating {
+        font-size: 0.8rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .beer-image {
+        max-height: 80%;
+        width: 20%;
+    }
+
+    .user-image {
+        width: 40%;
+        max-height: 80%;
+    }
+
+    .comments-header, .user-name {
+        font-size: 1rem;
+    }
+
+    .comments, .reviews_count, .friends_count {
+        font-size: 0.8rem;
+    }
+
+    .reviews_count, .friends_count {
+        margin-bottom: 5px;
+    }
+
+    .date, .user-regdate {
+        font-size: 0.6rem;
+    }
+
+    .user-regdate {
+        margin-top: 50px;
+    }
+
+    .link-update-icon {
+        height: 18px;
+    }
+
+    .beer_li, .beer_li_span {
+        font-size: 0.8rem;
+    }
+
+    form {
+        padding: 30px 10px;
+    }
+
+    form>.button {
+        margin-top: 10px;
+    }
+
+    .delete-form {
+        padding: 1rem;
+    }
+
+    label {
+        font-size: 0.8rem;
+    }
+
+    input, select, textarea {
+        font-size: 0.6rem;
+        width: 95%;
+        height: 1.7rem;
+    }
+
+    table {
+        margin-bottom: 10px;
+    }
+
+    td {
+        max-width: 100px;
+    }
+
+    .button {
+        font-size: 0.7rem;
+        margin: 0;
+        margin-right: 0 !important;
+    }
+
+    .footer {
+        width: 90vw;
+        font-size: 0.5rem;
+    }
+
+    .mode-icon {
+        width: 20px;
+    }
+
+    .switch-dm {
+        right: 2px;
+    }
+
+    .switch {
+        width: 32px;
+        height: 18px;
+    }
+
+    .slider:before {
+        height: 14px;
+        width: 14px;
+        left: 2px;
+        bottom: 2px;
+    }
+
+    .slider.round {
+        border-radius: 18px;
+    }
+
+    input:checked + .slider:before {
+        -webkit-transform: translateX(14px);
+        -ms-transform: translateX(14px);
+        transform: translateX(14px);
+    }
 
 }
 
