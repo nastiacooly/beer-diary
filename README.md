@@ -5,7 +5,7 @@
 #### Video Demo:  <URL HERE>
 
   
-#### What is it?
+#### 1. What is it?
   
 Beer Diary is my final project for CS50: Introduction to Computer Science course.
 
@@ -13,7 +13,7 @@ Beer Diary is a web-application created with help of Django framework (used Pyth
 
 Developed in 2021 by Anastasia Maryina (@nastiacooly).
 
-#### What can it do?
+#### 2. What can it do?
   
 Beer Diary provides the following experience for users:
   
@@ -34,17 +34,17 @@ Memory consists of a beer name, beer image, beer type (for example, stout or lag
 - users can see "memories" of their friends and friends' profiles;
 - users can set dark or light mode for the app.
 
-#### Which technologies were used to develop this app? And how does it work?
+#### 3. Which technologies were used to develop this app? And how does it work?
   
 Well, as I mentioned, Beer Diary was developed with help of Django Framework.
 
 So, the most of the code is written in Python.
 
-Templates for pages of the app were made with HTML5, CSS3 and also Python.
+Templates for pages of the app were made with HTML5, CSS3 and, also, Python.
 
 Interactive elements and switching of dark/light mode was developed with Javascript.
 
-#### What are all these files in this repository?
+#### 4. What are all these files in this repository?
   
 The organization of folders and files is the default organization provided by Django.
 
