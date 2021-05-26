@@ -9,22 +9,22 @@ active
 {% block main %}
     <h3 class="header fcolor_light">List of your beer memories:</h3>
 
-    <div class="list_container">
-
         {% if beerreview_list %}
+            <div class="list_container">
 
-            <ul>
-                {% for beer in beerreview_list %}
-                <li>
-                    <a href="{{ beer.get_absolute_url }}" class="beer_li fcolor_dark fcolor_accent_dt">{{ beer.name }}</a> 
-                    <span class="beer_li_span">({{ beer.beertype }})</span>
-                </li>
-                {% endfor %}
-            </ul>
+                <ul>
+                    {% for beer in beerreview_list %}
+                    <li>
+                        <a href="{{ beer.get_absolute_url }}" class="beer_li fcolor_dark fcolor_accent_dt">{{ beer.name }}</a> 
+                        <span class="beer_li_span">({{ beer.beertype }})</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
         {% else %}
-            <p class="no-content fcolor_light">There are no beer reviews in your diary.</p>
+            <p class="no-content fcolor_light">There are no memories in your Beer Diary yet.</p>
         {% endif %} 
 
-    </div>
+    
 
 {% endblock %}
