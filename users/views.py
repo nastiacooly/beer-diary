@@ -259,7 +259,7 @@ def search_users(request):
         object_list = User.objects.filter(username__icontains=query)
 
         if object_list:
-            messages.success(request, "Found!")
+            messages.success(request, f"Found {object_list.count()} user(s)!")
         else:
             messages.error(request, "No such users found!")
         

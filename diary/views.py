@@ -193,11 +193,11 @@ def beer_search(request):
             ).filter(name__icontains=query
             ).order_by('name')
         if reviews:
-            messages.success(request, "Found")
+            messages.success(request, f"Found {reviews.count()} match(es)!")
         else:
             messages.error(
             request,
-            "Not found in your diary"
+            "Not found in your diary!"
         )
 
     return render(
@@ -219,11 +219,11 @@ def beers_filter(request):
         For success/error messages depending on filter results
         """
         if reviews:
-            messages.success(request, "Found filter match")
+            messages.success(request, f"Found {reviews.count()} match(es)!")
         else:
             messages.error(
             request,
-            "No filter match"
+            "No filter match!"
         )
     
     form = FilterReviewsForm()
