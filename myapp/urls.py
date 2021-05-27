@@ -18,9 +18,15 @@ from django.urls import path
 from django.urls import include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.staticfiles.storage import staticfiles_storage
+from django.views.generic.base import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+]
+
+urlpatterns += [
+    path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url('favicon/')))
 ]
 
 urlpatterns += [
@@ -30,7 +36,7 @@ urlpatterns += [
 
 from django.views.generic import RedirectView
 urlpatterns += [
-    path('', RedirectView.as_view(url='/diary/', permanent=True)),
+    path('', RedirectView.as_view(url='diary/', permanent=True)),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

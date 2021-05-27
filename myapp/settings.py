@@ -25,12 +25,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'g*^%#kl*cv_fmd!tvrwog)py5#$twtz&-xm9k#=%&o53x#63@*')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
+DEBUG = False
 
-ALLOWED_HOSTS = [
-    'beerdiary.herokuapp.com',
-    '127.0.0.1'
-]
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -136,6 +133,8 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
@@ -155,6 +154,8 @@ MESSAGE_TAGS = {
         messages.WARNING: 'alert-warning',
         messages.ERROR: 'alert-danger',
 }
+
+WHITENOISE_USE_FINDERS = True
 
 # Configure Django App for Heroku.
 django_heroku.settings(locals())

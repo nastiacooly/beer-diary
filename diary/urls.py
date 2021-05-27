@@ -6,7 +6,7 @@ from django.conf.urls import url
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^beers/$', views.BeerReviewListView.as_view(), name='beers'),
-    url(r'^beer/(?P<pk>\d+)$', views.BeerReviewDetailView.as_view(), name='beer-detail'),
+    url(r'^beer/(?P<pk>\d+)/$', views.BeerReviewDetailView.as_view(), name='beer-detail'),
 ]
 
 urlpatterns += [
