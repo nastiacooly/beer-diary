@@ -49,7 +49,7 @@
         <nav class="navbar navbar-expand-lg navbar-light navbar_bgc">
             <div class="container-fluid">
                 <img src="{% static 'icons/beer.png'%}" alt="beer_diary" class="main-icon">
-                <a class="navbar-brand navlink-fc" href="{% url 'index' %}/">Beer Diary</a>
+                <a class="navbar-brand navlink-fc" href="{% url 'index' %}">Beer Diary</a>
                 <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar" data-toggle="collapse" type="button">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -57,20 +57,20 @@
                     <div class="collapse navbar-collapse" id="navbar">
                         {% if request.user.is_authenticated %}
                             <ul class="navbar-nav mr-auto">
-                                <li class="nav-item"><a class="nav-link navlink-fc {% block active-link-1 %}{% endblock %}" aria-current="page" href="{% url 'my-perfect-beers' %}/">My Favourites</a></li>
-                                <li class="nav-item"><a class="nav-link navlink-fc {% block active-link-2 %}{% endblock %}" href="{% url 'add_new_beer_review' %}/">Add Review</a></li>
-                                <li class="nav-item"><a class="nav-link navlink-fc {% block active-link-3 %}{% endblock %}" href="{% url 'beers' %}/">See All</a></li>
-                                <li class="nav-item"><a class="nav-link navlink-fc {% block active-link-4 %}{% endblock %}" href="{% url 'search' %}/">Search</a></li>
-                                <li class="nav-item"><a class="nav-link navlink-fc {% block active-link-5 %}{% endblock %}" href="{% url 'filter' %}/">Filter</a></li>
+                                <li class="nav-item"><a class="nav-link navlink-fc {% block active-link-1 %}{% endblock %}" aria-current="page" href="{% url 'my-perfect-beers' %}">My Favourites</a></li>
+                                <li class="nav-item"><a class="nav-link navlink-fc {% block active-link-2 %}{% endblock %}" href="{% url 'add_new_beer_review' %}">Add Review</a></li>
+                                <li class="nav-item"><a class="nav-link navlink-fc {% block active-link-3 %}{% endblock %}" href="{% url 'beers' %}">See All</a></li>
+                                <li class="nav-item"><a class="nav-link navlink-fc {% block active-link-4 %}{% endblock %}" href="{% url 'search' %}">Search</a></li>
+                                <li class="nav-item"><a class="nav-link navlink-fc {% block active-link-5 %}{% endblock %}" href="{% url 'filter' %}">Filter</a></li>
                             </ul>
                             <ul class="navbar-nav ml-auto mt-2">
-                                <li class="nav-item"><a class="nav-link navlink-fc {% block active-link-8 %}{% endblock %}" href="{% url 'profile' %}/">{{ request.user.get_username }}</a></li>
+                                <li class="nav-item"><a class="nav-link navlink-fc {% block active-link-8 %}{% endblock %}" href="{% url 'profile' %}">{{ request.user.get_username }}</a></li>
                                 <li class="nav-item"><a class="nav-link navlink-fc" href="{% url 'logout'%}/">Log Out</a></li>
                             </ul>
                         {% else %}
                             <ul class="navbar-nav ml-auto mt-2">
-                                <li class="nav-item"><a class="nav-link navlink-fc {% block active-link-6 %}{% endblock %}" href="{% url 'login'%}?next={{request.path}}/">Log In</a></li>
-                                <li class="nav-item"><a class="nav-link navlink-fc {% block active-link-7 %}{% endblock %}" href="{% url 'register' %}/">Register</a></li>
+                                <li class="nav-item"><a class="nav-link navlink-fc {% block active-link-6 %}{% endblock %}" href="{% url 'login'%}?next={{request.path}}">Log In</a></li>
+                                <li class="nav-item"><a class="nav-link navlink-fc {% block active-link-7 %}{% endblock %}" href="{% url 'register' %}">Register</a></li>
                             </ul>
                         {% endif %}
                     </div>
@@ -89,13 +89,13 @@
                     <div class="pagination mb-5">
                         <span class="page-links">
                             {% if page_obj.has_previous %}
-                                <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}/" class="button button_lt button_dt">previous</a>
+                                <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}" class="button button_lt button_dt">previous</a>
                             {% endif %}
                             <span class="page-current ml-2 mr-2">
                                 Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
                             </span>
                             {% if page_obj.has_next %}
-                                <a href="{{ request.path }}?page={{ page_obj.next_page_number }}/" class="button button_lt button_dt">next</a>
+                                <a href="{{ request.path }}?page={{ page_obj.next_page_number }}" class="button button_lt button_dt">next</a>
                             {% endif %}
                         </span>
                     </div>
@@ -114,10 +114,10 @@
         <footer class="footer mt-5">
             Developed by Anastasia Maryina (Github: <a href="https://github.com/nastiacooly" target="_blank">@nastiacooly</a>).<br>
             Graphics designed by 
-            <a href="http://www.freepik.com/" target="_blank">dgim-studio / Freepik</a>,
-            <a href='https://pngtree.com/so/vector/' target="_blank">pngtree.com</a>,
-            <a href="http://icons8.ru/" target="_blank">Icons8</a>,
-            <a href="https://www.flaticon.com/" title="Flaticon" target="_blank">Flaticon</a>.
+            <a href="http://www.freepik.com" target="_blank">dgim-studio / Freepik</a>,
+            <a href='https://pngtree.com/so/vector' target="_blank">pngtree.com</a>,
+            <a href="http://icons8.ru" target="_blank">Icons8</a>,
+            <a href="https://www.flaticon.com" title="Flaticon" target="_blank">Flaticon</a>.
         </footer>
 
         <!-- Bootstrap 4.5 scripts -->
