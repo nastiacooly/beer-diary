@@ -25,6 +25,7 @@ a.button:hover {
 
 body {
     position: relative;
+    overflow-wrap: break-word;
 }
 
 .bg-image {
@@ -198,6 +199,10 @@ textarea {
 
 .profile_section_big {
     height: auto;
+}
+
+.profile_container>.profile_section:first-of-type {
+    min-height: 280px;
 }
 
 .review__descr, .profile_info {
@@ -536,6 +541,10 @@ input:checked + .slider:before {
         padding: 30px 30px;
         height: auto;
         flex-direction: column;
+    }
+
+    .profile_container>.profile_section:first-of-type {
+        min-height: 210px;
     }
 
     .profile_friends {
