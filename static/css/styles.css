@@ -29,7 +29,7 @@ body {
 }
 
 .bg-image {
-    background: url("../images/bg-4.jpg") center repeat fixed;
+    background: url("../images/bg-4.jpg") center/20% repeat fixed;
 }
 
 .container {
