@@ -486,6 +486,7 @@ input:checked + .slider:before {
 .body.dark-mode .button_dt:hover, 
 .body.dark-mode a.button:hover {
     background-color: RGBA(53, 53, 53, .87);
+    color: RGBA(238, 238, 238, .87);
 }
 
 .body.dark-mode .review_bgc, 
