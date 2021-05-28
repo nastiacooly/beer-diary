@@ -189,17 +189,9 @@ textarea {
     justify-content: space-evenly;
     padding: 20px;
     width: 450px;
-    height: 280px;
+    height: auto;
     border-radius: 50px;
     margin-bottom: 30px;
-}
-
-.profile_section_big {
-    height: auto;
-}
-
-.profile_container>.profile_section:first-of-type {
-    min-height: 280px;
 }
 
 .review__descr, .profile_info {
@@ -679,7 +671,6 @@ input:checked + .slider:before {
     .review, .profile_section {
         padding: 10px;
         width: 430px;
-        height: 210px;
         border-radius: 50px;
         margin-bottom: 20px;
     }
@@ -690,7 +681,6 @@ input:checked + .slider:before {
 
     .profile_section_big {
         padding: 30px 30px;
-        height: auto;
         flex-direction: column;
     }
 
