@@ -64,7 +64,7 @@
                             </ul>
                             <ul class="navbar-nav ml-auto mt-2">
                                 <li class="nav-item"><a class="nav-link navlink-fc {% block active-link-8 %}{% endblock %}" href="{% url 'profile' %}">{{ request.user.get_username }}</a></li>
-                                <li class="nav-item"><a class="nav-link navlink-fc" href="{% url 'logout'%}/">Log Out</a></li>
+                                <li class="nav-item"><a class="nav-link navlink-fc" href="{% url 'logout'%}">Log Out</a></li>
                             </ul>
                         {% else %}
                             <ul class="navbar-nav ml-auto mt-2">
