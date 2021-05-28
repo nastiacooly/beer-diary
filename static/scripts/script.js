@@ -2,11 +2,12 @@ window.addEventListener('DOMContentLoaded', function() {
 
     // Adding default beer image to reviews
 
-    const beerImages = document.querySelectorAll('.beer-image');
+    const beerImages = document.querySelectorAll('.beer-image'),
+        defaultBeerImageSrc = document.querySelector('img.hide').getAttribute('src');
     if (beerImages) {
         beerImages.forEach((image) => {
             if (image.getAttribute('src') == '') {
-                image.src = "{% static 'images/beer-default.jpg' %}";
+                image.src = defaultBeerImageSrc;
             }
         });
     }
