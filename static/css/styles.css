@@ -417,8 +417,12 @@ input:checked + .slider:before {
     color: #F1E3CB;
 }
 
-.navlink-fc, .fcolor_dark, label, .beer_li, a.button:hover, .user_li {
+.navlink-fc, label {
     color: #581C0C !important;
+}
+
+.fcolor_dark, .beer-li, .user_li, a.button:hover {
+    color: #581C0C;
 }
 
 .button_lt {
