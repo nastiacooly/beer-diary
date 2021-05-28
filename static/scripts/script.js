@@ -46,6 +46,7 @@ window.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('theme', 'dark');
         modeIconDark.classList.remove('hide');
         modeIconLight.classList.add('hide');
+        switchBtn.checked = 'True';
     }
 
     if (currentTheme == "light") {
@@ -53,6 +54,7 @@ window.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('theme', 'light');
         modeIconDark.classList.add('hide');
         modeIconLight.classList.remove('hide');
+        switchBtn.removeAttribute('checked');
     }
 
 
