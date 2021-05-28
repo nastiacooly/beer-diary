@@ -413,7 +413,12 @@ input:checked + .slider:before {
     color: #581C0C !important;
 }
 
-.fcolor_dark, .beer_li, .beer_li:hover, .user_li, a.button:hover {
+.fcolor_dark, 
+.beer_li, 
+.beer_li:hover, 
+.user_li, 
+.user_li:hover,
+a.button:hover {
     color: #581C0C;
 }
 
