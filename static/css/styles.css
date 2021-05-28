@@ -531,6 +531,10 @@ input:checked + .slider:before {
     filter: contrast(0.9) grayscale(0.5) !important;
 }
 
+.body.dark-mode .slider {
+    background-color: black;
+}
+
 /* crispy forms styles for dark theme */
 .body.dark-mode .help-block {
     color: RGBA(49, 49, 49, .87)
