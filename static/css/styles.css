@@ -195,9 +195,10 @@ textarea {
 }
 
 .review__descr, .profile_info {
-    min-width: 55%;
+    width: 55%;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     text-align: left;
 }
 
