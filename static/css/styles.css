@@ -84,7 +84,7 @@ label, .beer_li {
     font-size: 1.25rem;
 }
 
-.user_li {
+.user_li, .friend_li {
     font-style: normal;
     font-weight: 300;
     font-size: 1.25rem;
@@ -419,6 +419,8 @@ input:checked + .slider:before {
 .beer_li:hover, 
 .user_li, 
 .user_li:hover,
+.friend_li,
+.friend_li:hover,
 a.button:hover {
     color: #581C0C;
 }
@@ -769,7 +771,10 @@ a.button:hover {
         height: 18px;
     }
 
-    .beer_li, .beer_li_span, .user_li {
+    .beer_li, 
+    .beer_li_span, 
+    .user_li, 
+    .friend_li {
         font-size: 0.8rem;
     }
 

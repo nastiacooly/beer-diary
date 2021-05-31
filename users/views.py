@@ -120,6 +120,8 @@ def users_list(request):
         if i in friends:
             friends.remove(i)
 
+    friends = list(dict.fromkeys(friends))
+
     for se in sent_friend_requests:
         sent_to.append(se.to_user)
 
@@ -292,8 +294,8 @@ class BeerReviewsByOtherUserListView(LoginRequiredMixin, generic.ListView):
         
         # Set friends status if other user is a friend of a logged in user
         status = ""
-        if user.username in friends:
-            status = 'friends'
+        if user.username.lower() in friends:
+            status = "friends"
 
         context['status'] = status
         return context
