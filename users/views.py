@@ -120,6 +120,7 @@ def users_list(request):
         if i in friends:
             friends.remove(i)
 
+    # to remove duplicates if any
     friends = list(dict.fromkeys(friends))
 
     for se in sent_friend_requests:
