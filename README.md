@@ -2,7 +2,7 @@
 ## A web-app to keep memories of all the beers you ever tasted and share it with friends!
 
 #### Try [Beer Diary](https://beerdiary.herokuapp.com) yourself!
-#### Video Demo:  <URL HERE>
+#### Video Demo: [watch](https://youtu.be/ocqnSbL1if4) on Youtube
 
   
 #### 1. What is it?
